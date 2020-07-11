@@ -8,7 +8,7 @@ Join the [slack group](TODO) for the weekly link!
 All Meetings Scheduled for [INSERT TIME] unless otherwise noted:
 
 
-- DATE: 2 Introduction - PRESENTER NAME: [SLIDES](https://github.com/r4ds/bookclub-R_for_Data_Science_/blob/master/Presentations/01-introduction.pdf)
+- DATE: 2 Introduction - PRESENTER NAME: [SLIDES](https://github.com/r4ds/bookclub-R_for_Data_Science/blob/master/Presentations/01-introduction.pdf)
 - DATE: 3 Data visualisation - PRESENTER NAME: [SLIDES](link-to-slides)
 - DATE: 4 Workflow: basics - PRESENTER NAME: [SLIDES](link-to-slides)
 - DATE: 5 Data transformation - PRESENTER NAME: [SLIDES](link-to-slides)
