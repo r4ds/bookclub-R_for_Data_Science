@@ -1,39 +1,162 @@
 # R4DS [R For Data Science](https://r4ds.had.co.nz/) Book Club
 
-This repository has a Presentation folder containing the slides (as PDFs) from [TODO: biweekly] meetings. 
-Join the [slack group](TODO) for the weekly link!
+A weekly reading group following the chapters of R for Data Science by Garrett Grolemund & Hadley Wickham
 
-# Meeting Schedule:
+Visit the [#book_club-r_for_data_science channel](https://r4ds.io/join) on Slack to join the video chat! 
 
-All Meetings Scheduled for [INSERT TIME] unless otherwise noted:
+This repo contains 3 main folders:
+
+- QandA: A collection of questions (and answers) on the chapters that come up during meetings (or between!)
+
+- Presentations: each week a presenter will give a talk summarizing the chapter and/or discussing practical applications of the topic at hand. 
+
+- Data: Example datasets about [? (pick something fun!)] are stored in this folder to help facilitate practical applications!
+
+### Meeting Schedule 
+
+*Group 1 [Americas] - (started 2020-07-31) - Tuesdays, 8pm EDT/EST*
+
+- 2020-07-31 Chapter 2 - Introduction: 
+- 2020-08-07 Chapter 3 - Data visualisation: 
+- 2020-08-14 Chapter 4 -  Workflow: basics 
+
+<details>
+  <summary> Future Meetings </summary>
+
+TBD!
+
+</details>
+<hr>
 
 
-- DATE: 2 Introduction - PRESENTER NAME: [SLIDES](https://github.com/r4ds/bookclub-R_for_Data_Science/blob/master/Presentations/01-introduction.pdf)
-- DATE: 3 Data visualisation - PRESENTER NAME: [SLIDES](link-to-slides)
-- DATE: 4 Workflow: basics - PRESENTER NAME: [SLIDES](link-to-slides)
-- DATE: 5 Data transformation - PRESENTER NAME: [SLIDES](link-to-slides)
-- DATE: 6 Workflow: scripts - PRESENTER NAME: [SLIDES](link-to-slides)
-- DATE: 7 Exploratory Data Analysis - PRESENTER NAME: [SLIDES](link-to-slides)
-- DATE: 8 Workflow: projects - PRESENTER NAME: [SLIDES](link-to-slides)
-- DATE: 9 Introduction - PRESENTER NAME: [SLIDES](link-to-slides)
-- DATE: 10 Tibbles - PRESENTER NAME: [SLIDES](link-to-slides)
-- DATE: 11 Data import - PRESENTER NAME: [SLIDES](link-to-slides)
-- DATE: 12 Tidy data - PRESENTER NAME: [SLIDES](link-to-slides)
-- DATE: 13 Relational data - PRESENTER NAME: [SLIDES](link-to-slides)
-- DATE: 14 Strings - PRESENTER NAME: [SLIDES](link-to-slides)
-- DATE: 15 Factors - PRESENTER NAME: [SLIDES](link-to-slides)
-- DATE: 16 Dates and times - PRESENTER NAME: [SLIDES](link-to-slides)
-- DATE: 17 Introduction - PRESENTER NAME: [SLIDES](link-to-slides)
-- DATE: 18 Pipes - PRESENTER NAME: [SLIDES](link-to-slides)
-- DATE: 19 Functions - PRESENTER NAME: [SLIDES](link-to-slides)
-- DATE: 20 Vectors - PRESENTER NAME: [SLIDES](link-to-slides)
-- DATE: 21 Iteration - PRESENTER NAME: [SLIDES](link-to-slides)
-- DATE: 22 Introduction - PRESENTER NAME: [SLIDES](link-to-slides)
-- DATE: 23 Model basics - PRESENTER NAME: [SLIDES](link-to-slides)
-- DATE: 24 Model building - PRESENTER NAME: [SLIDES](link-to-slides)
-- DATE: 25 Many models - PRESENTER NAME: [SLIDES](link-to-slides)
-- DATE: 26 Introduction - PRESENTER NAME: [SLIDES](link-to-slides)
-- DATE: 27 R Markdown - PRESENTER NAME: [SLIDES](link-to-slides)
-- DATE: 28 Graphics for communication - PRESENTER NAME: [SLIDES](link-to-slides)
-- DATE: 29 R Markdown formats - PRESENTER NAME: [SLIDES](link-to-slides)
-- DATE: 30 R Markdown workflow - PRESENTER NAME: [SLIDES](link-to-slides)
+*Group 2 [Africa/Europe] - (started 2020-07-31) - Tuesdays, 8pm EDT/EST*
+
+- 2020-08-03 Chapter 2 - Introduction: Alan Kinene/shmuhamadd
+- 2020-08-10 Chapter 3 - Data visualisation: 
+- 2020-08-17 Chapter 4 -  Workflow: basics 
+
+<details>
+  <summary> Future Meetings </summary>
+
+TBD!
+
+</details>
+<hr>
+
+### Presentations & Recordings
+
+Chapter 2 Introduction 
+
+- PRESENTER NAME: [SLIDES](link-to-slides)
+
+Chapter 3 Data visualisation 
+
+- PRESENTER NAME: [SLIDES](link-to-slides)
+
+Chapter 4 Workflow: basics 
+
+- PRESENTER NAME: [SLIDES](link-to-slides)
+
+Chapter 5 Data transformation 
+
+- PRESENTER NAME: [SLIDES](link-to-slides)
+
+Chapter 6 Workflow: scripts 
+
+- PRESENTER NAME: [SLIDES](link-to-slides)
+
+Chapter 7 Exploratory Data Analysis 
+
+- PRESENTER NAME: [SLIDES](link-to-slides)
+
+Chapter 8 Workflow: projects 
+
+- PRESENTER NAME: [SLIDES](link-to-slides)
+
+Chapter 9 Introduction 
+
+- PRESENTER NAME: [SLIDES](link-to-slides)
+
+Chapter 10 Tibbles 
+
+- PRESENTER NAME: [SLIDES](link-to-slides)
+
+Chapter 11 Data import 
+
+- PRESENTER NAME: [SLIDES](link-to-slides)
+
+Chapter 12 Tidy data 
+
+- PRESENTER NAME: [SLIDES](link-to-slides)
+
+Chapter 13 Relational data 
+
+- PRESENTER NAME: [SLIDES](link-to-slides)
+
+Chapter 14 Strings 
+
+- PRESENTER NAME: [SLIDES](link-to-slides)
+
+Chapter 15 Factors 
+
+- PRESENTER NAME: [SLIDES](link-to-slides)
+
+Chapter 16 Dates and times 
+
+- PRESENTER NAME: [SLIDES](link-to-slides)
+
+Chapter 17 Introduction 
+
+- PRESENTER NAME: [SLIDES](link-to-slides)
+
+Chapter 18 Pipes 
+
+- PRESENTER NAME: [SLIDES](link-to-slides)
+
+Chapter 19 Functions 
+
+- PRESENTER NAME: [SLIDES](link-to-slides)
+
+Chapter 20 Vectors 
+
+- PRESENTER NAME: [SLIDES](link-to-slides)
+
+Chapter 21 Iteration 
+
+- PRESENTER NAME: [SLIDES](link-to-slides)
+
+Chapter 22 Introduction 
+
+- PRESENTER NAME: [SLIDES](link-to-slides)
+
+Chapter 23 Model basics 
+
+- PRESENTER NAME: [SLIDES](link-to-slides)
+
+Chapter 24 Model building 
+
+- PRESENTER NAME: [SLIDES](link-to-slides)
+
+Chapter 25 Many models 
+
+- PRESENTER NAME: [SLIDES](link-to-slides)
+
+Chapter 26 Introduction 
+
+- PRESENTER NAME: [SLIDES](link-to-slides)
+
+Chapter 27 R Markdown 
+
+- PRESENTER NAME: [SLIDES](link-to-slides)
+
+Chapter 28 Graphics for communication 
+
+- PRESENTER NAME: [SLIDES](link-to-slides)
+
+Chapter 29 R Markdown formats 
+
+- PRESENTER NAME: [SLIDES](link-to-slides)
+
+Chapter 30 R Markdown workflow 
+
+- PRESENTER NAME: [SLIDES](link-to-slides)
