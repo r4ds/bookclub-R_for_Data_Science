@@ -16,7 +16,7 @@ This repo contains 3 main folders:
 
 *Group 1 [Americas] - (started 2020-07-31) - Tuesdays, 8pm EDT/EST*
 
-- 2020-07-31 Chapter 2 - Introduction: 
+- 2020-07-31 Chapter 2 - Introduction: Luke Morris
 - 2020-08-07 Chapter 3 - Data visualisation: 
 - 2020-08-14 Chapter 4 -  Workflow: basics 
 
