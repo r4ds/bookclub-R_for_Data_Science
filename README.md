@@ -16,8 +16,8 @@ This repo contains 3 main folders:
 
 *Group 1 [Americas] - (started 2020-07-31) - Tuesdays, 8pm EDT/EST*
 
-- 2020-07-31 Chapter 2 - Introduction: Luke Morris
-- 2020-08-07 Chapter 3 - Data visualisation: 
+- 2020-07-31 Chapter 2 - Introduction: Luke Morris [PDF](https://github.com/morrisLuke/bookclub-R_for_Data_Science/blob/main/Presentations/Week01/R4DS%20Ch%201-2%20-%20Morris.pdf) | [HTML](https://github.com/morrisLuke/bookclub-R_for_Data_Science/blob/main/Presentations/Week01/R4DS%20Ch%201-2%20-%20Morris.html) | [RMD](https://github.com/morrisLuke/bookclub-R_for_Data_Science/blob/main/Presentations/Week01/R4DS%20Ch%201-2%20-%20Morris.Rmd)
+- 2020-08-07 Chapter 3 - Data visualisation: Silvia Canelon
 - 2020-08-14 Chapter 4 -  Workflow: basics 
 
 <details>
