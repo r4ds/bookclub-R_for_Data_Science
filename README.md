@@ -47,7 +47,7 @@ TBD!
 
 Chapter 2 Introduction 
 
-- Luke Morris (Group 1 [Americas]: [VIDEO](https://youtu.be/5H9rphM7xBo) | [SLIDES](https://github.com/morrisLuke/bookclub-R_for_Data_Science/blob/adjustments/Presentations/Week01/Group%201%20%5BAmericas%5D/R4DS%20Ch%201-2%20-%20Morris.html)
+- Luke Morris (Group 1 [Americas]): [VIDEO](https://youtu.be/5H9rphM7xBo) | [SLIDES](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week01/Group%201%20%5BAmericas%5D/R4DS%20Ch%201-2%20-%20Morris.html)
 
 - PRESENTER NAME: [SLIDES](link-to-slides)
 
