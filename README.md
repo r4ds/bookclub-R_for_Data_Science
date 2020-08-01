@@ -29,7 +29,7 @@ TBD!
 <hr>
 
 
-*Group 2 [Africa/Europe] - (started 2020-07-31) - Tuesdays, 8pm EDT/EST*
+*Group 2 [Africa/Europe] - (starting 2020-08-03) - Tuesdays, 19:30 CET (CEST)*
 
 - 2020-08-03 Chapter 2 - Introduction: Alan Kinene/shmuhamadd
 - 2020-08-10 Chapter 3 - Data visualisation: 
