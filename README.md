@@ -58,116 +58,114 @@ Chapter 2 Introduction
 
 - Alan Kinene: VIDEO | SLIDES
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
-
 Chapter 3 Data visualisation 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 4 Workflow: basics 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 5 Data transformation 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 6 Workflow: scripts 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 7 Exploratory Data Analysis 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 8 Workflow: projects 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 9 Introduction 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 10 Tibbles 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 11 Data import 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 12 Tidy data 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 13 Relational data 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 14 Strings 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 15 Factors 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 16 Dates and times 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 17 Introduction 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 18 Pipes 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 19 Functions 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 20 Vectors 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 21 Iteration 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 22 Introduction 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 23 Model basics 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 24 Model building 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 25 Many models 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 26 Introduction 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 27 R Markdown 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 28 Graphics for communication 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 29 R Markdown formats 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 30 R Markdown workflow 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
