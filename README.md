@@ -32,7 +32,7 @@ This repo contains 3 main folders:
 <hr>
 
 
-*Group 2 [Africa/Europe] - (starting 2020-08-03) - Tuesdays, 19:30 CE(S)T*
+*Cohort 2 [Africa/Europe] - (starting 2020-08-03) - Tuesdays, 19:30 CE(S)T*
 
 - 2020-08-03 Chapter 2 - Introduction: Alan Kinene
 - 2020-08-10 Chapter 3 - Data visualisation: 
