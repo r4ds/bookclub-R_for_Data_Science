@@ -17,8 +17,8 @@ This repo contains 3 main folders:
 *Group 1 [Americas] - (started 2020-07-31) - Tuesdays, 8pm EDT/EST*
 
 - 2020-07-31 Chapter 2 - Introduction: Luke Morris
-- 2020-08-07 Chapter 3 - Data visualisation: 
-- 2020-08-14 Chapter 4 -  Workflow: basics 
+- 2020-08-07 Chapter 3 - Data visualisation: Presenter TBD
+- 2020-08-14 Chapter 4 -  Workflow: basics: Presenter TBD
 
 <details>
   <summary> Future Meetings </summary>
@@ -46,6 +46,8 @@ TBD!
 ### Presentations & Recordings
 
 Chapter 2 Introduction 
+
+- Luke Morris (Group 1 [Americas]): [VIDEO](https://youtu.be/5H9rphM7xBo) | [SLIDES](https://morrisluke.github.io/bookclub-R_for_Data_Science/Presentations/Week01/Group%201%20%5BAmericas%5D/R4DS%20Ch%201-2%20-%20Morris.html#1)
 
 - PRESENTER NAME: [SLIDES](link-to-slides)
 
