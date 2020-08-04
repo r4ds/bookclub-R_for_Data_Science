@@ -1,0 +1,189 @@
+---
+title: "R For Data Science Book Club -- Ch. 1 & 2"
+author: "Luke Morris"
+date: "7/31/2020"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r, echo=FALSE, message = FALSE, warning = FALSE}
+library(tidyverse)
+```
+
+## Welcome!
+
+![](https://d33wubrfki0l68.cloudfront.net/b88ef926a004b0fce72b2526b0b5c4413666a4cb/24a30/cover.png){width=300, style="float:right"}
+
+We'll be covering a different chapter of [R for Data Science](https://r4ds.had.co.nz/index.html) by Hadley Wickham & Garrett Grolemund every Friday at 8 p.m. Eastern/5 p.m. Pacific.
+
+Sessions will be recorded if you can't make it live every week.
+
+Are you up for presenting one week? Let me know!
+
+## What we'll learn
+
+> "You'll learn how to get your data into R, get it into the most 
+> useful structure, transform it, visualize it and model it.
+
+...
+
+> "Just as a chemist learns to clean test tubes and stock a lab, 
+> you'll learn how to clean data and draw plots --- and many other 
+> things besides."
+
+&nbsp;
+&nbsp;
+
+[*--- Wickham & Grolemund, welcome page*]{style="float:right"}
+
+## The Data Science Project Model
+
+![](https://d33wubrfki0l68.cloudfront.net/571b056757d68e6df81a3e3853f54d3c76ad6efc/32d37/diagrams/data-science.png){width=90%}
+
+[*-- Wickham & Grolemund, Ch. 1.1*]{style="float:right"}
+
+&nbsp;
+&nbsp;
+
+**Import** -- Getting you data into R
+
+## The Data Science Project Model
+
+![](https://d33wubrfki0l68.cloudfront.net/571b056757d68e6df81a3e3853f54d3c76ad6efc/32d37/diagrams/data-science.png){width=90%}
+
+[*-- Wickham & Grolemund, Ch. 1.1*]{style="float:right"}
+
+&nbsp;
+&nbsp;
+
+**Tidy** -- Storing your data in a consistent form
+
+## The Data Science Project Model
+
+![](https://d33wubrfki0l68.cloudfront.net/571b056757d68e6df81a3e3853f54d3c76ad6efc/32d37/diagrams/data-science.png){width=90%}
+
+[*-- Wickham & Grolemund, Ch. 1.1*]{style="float:right"}
+
+&nbsp;
+&nbsp;
+
+**Transform** -- Narrowing in on observations of interest and creating new variables from ones already existing
+
+## The Data Science Project Model
+
+![](https://d33wubrfki0l68.cloudfront.net/571b056757d68e6df81a3e3853f54d3c76ad6efc/32d37/diagrams/data-science.png){width=90%}
+
+[*-- Wickham & Grolemund, Ch. 1.1*]{style="float:right"}
+
+&nbsp;
+&nbsp;
+
+**Visualize** -- Visually representing your data
+
+## The Data Science Project Model
+
+![](https://d33wubrfki0l68.cloudfront.net/571b056757d68e6df81a3e3853f54d3c76ad6efc/32d37/diagrams/data-science.png){width=90%}
+
+[*-- Wickham & Grolemund, Ch. 1.1*]{style="float:right"}
+
+&nbsp;
+&nbsp;
+
+**Model** - Using your data to answer the question at hand
+
+## The Data Science Project Model
+
+![](https://d33wubrfki0l68.cloudfront.net/571b056757d68e6df81a3e3853f54d3c76ad6efc/32d37/diagrams/data-science.png){width=90%}
+
+[*-- Wickham & Grolemund, Ch. 1.1*]{style="float:right"}
+
+&nbsp;
+&nbsp;
+
+**Communicate** - Relaying your findings to others
+
+***
+> "You don't need to be an expert programmer to be a data 
+> scientist, but becoming a better programmer allows you to
+> automate common tasks, and solve new problems with greater
+> ease."
+
+[*-- Wickham & Grolemund, Ch. 1.1*]{style="float:right"}
+
+## The 80-20 Rule
+
+> "You can tackle about 80% of every project using the tools that
+> you'll learn in this book, but you'll need other tools to tackle the
+> remaining 20%."
+
+[*-- Wickham & Grolemund, Ch. 1.1*]{style="float:right"}
+
+&nbsp;
+&nbsp;
+
+That final 20% will vary by project, the data you're exploring and the questions you're hoping to answer.
+
+## A Wise Word from the Authors
+
+> "While it's tempting to skip the exercises, there's no better
+> way to learn than practicing on real problems."
+
+&nbsp;
+&nbsp;
+
+Fortunately, there's someone who's run through this book before and created a sort of [answer key](https://jrnold.github.io/r4ds-exercise-solutions/).
+
+## A Wise Word from the Authors
+
+> "While it's tempting to skip the exercises, there's no better
+> way to learn than practicing on real problems."
+
+&nbsp;
+&nbsp;
+
+Fortunately, there's someone who's run through this book before and created a sort of [answer key](https://jrnold.github.io/r4ds-exercise-solutions/).
+
+(But seriously  ... you'll learn more if you at least try to solve it on your own first)
+
+## Run into trouble? You're not alone
+
+Confused by an error you received? 
+
+Try Googling the error message. 
+
+&nbsp;
+
+Other places to look for help:
+
+[Stack Overflow](https://stackoverflow.com/)
+
+[Community.Rstudio](https://community.rstudio.com/) (Imagine a less-grouchy Stack Overflow)
+
+R4DS Slack
+
+## What You Need for this Book Club
+
+1. [Install R](https://cloud.r-project.org/)
+
+2. [Install RStudio](https://rstudio.com/products/rstudio/download/)
+
+3. Open RStudio and install the Tidyverse package by typing or pasting the following in the console (bottom-left box)
+
+`install.packages("tidyverse")`
+
+4. Install these other packages the book uses as examples by typing or pasting the following in the console
+
+`install.packages(c("nycflights13", "gapminder", "Lahman"))`
+
+## See you next week!
+
+We'll be tackling **Data Visualization**
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+ggplot(mpg, aes(x = displ, y = hwy)) +
+    geom_point(aes(colour = drv)) +
+    geom_smooth(se = FALSE)
+```
