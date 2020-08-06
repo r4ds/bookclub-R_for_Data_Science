@@ -54,9 +54,9 @@ This repo contains 3 main folders:
 
 Chapter 2 Introduction 
 
-- Luke Morris: [VIDEO](https://youtu.be/5H9rphM7xBo) | [SLIDES](https://morrisluke.github.io/bookclub-R_for_Data_Science/Presentations/Week01/Group%201%20%5BAmericas%5D/R4DS%20Ch%201-2%20-%20Morris.html#1)
+- Luke Morris: [VIDEO](https://youtu.be/J8KHe2KAnUk) | [SLIDES](https://morrisluke.github.io/bookclub-R_for_Data_Science/Presentations/Week01/Cohort1/R4DS%20Ch%201-2%20-%20Morris.html)
 
-- Alan Kinene: VIDEO | SLIDES
+- Alan Kinene: [VIDEO](https://youtu.be/M28oO5jmVQU) | SLIDES
 
 Chapter 3 Data visualisation 
 
