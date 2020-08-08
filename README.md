@@ -32,7 +32,7 @@ TBD!
 *Group 2 [Africa/Europe] - (starting 2020-08-03) - Tuesdays, 19:30 CET (CEST)*
 
 - 2020-08-03 Chapter 2 - Introduction: Alan Kinene/shmuhamadd
-- 2020-08-10 Chapter 3 - Data visualisation: 
+- 2020-08-10 Chapter 3 - Data visualisation: Kamran Khan 
 - 2020-08-17 Chapter 4 -  Workflow: basics 
 
 <details>
