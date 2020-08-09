@@ -35,7 +35,7 @@ This repo contains 3 main folders:
 *Cohort 2 [Africa/Europe] - (starting 2020-08-03) - Tuesdays, 19:30 CE(S)T*
 
 - 2020-08-03 Chapter 2 - Introduction: Alan Kinene
-- 2020-08-10 Chapter 3 - Data visualisation: 
+- 2020-08-10 Chapter 3 - Data visualisation: Kamran KHAN
 - 2020-08-17 Chapter 4 -  Workflow: basics 
 - 2020-08-21 Chapter 5 - Data visualisation: Presenter TBD
 
@@ -56,7 +56,7 @@ Chapter 2 Introduction
 
 - Luke Morris: [VIDEO](https://youtu.be/5H9rphM7xBo) | [SLIDES](https://morrisluke.github.io/bookclub-R_for_Data_Science/Presentations/Week01/Group%201%20%5BAmericas%5D/R4DS%20Ch%201-2%20-%20Morris.html#1)
 
-- Alan Kinene: VIDEO | SLIDES
+- [Alan Kinene](https://twitter.com/kinenealan): [VIDEO](https://youtu.be/M28oO5jmVQU) | [SLIDES](https://www.alankinene.com/r4ds_book_club/r4ds/r4ds-ch1_2.html#1)  
 
 Chapter 3 Data visualisation 
 
