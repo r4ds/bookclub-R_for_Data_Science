@@ -55,7 +55,7 @@ Chapter 2 Introduction
 
 - Luke Morris: [VIDEO](https://youtu.be/J8KHe2KAnUk) | [SLIDES](https://morrisluke.github.io/bookclub-R_for_Data_Science/Presentations/Week01/Cohort1/R4DS%20Ch%201-2%20-%20Morris.html)
 
-- [Alan Kinene](https://twitter.com/kinenealan): [VIDEO](https://youtu.be/M28oO5jmVQU) | [SLIDES](https://www.alankinene.com/r4ds_book_club/r4ds/r4ds-ch1_2.html#1)
+- [Alan Kinene](https://twitter.com/kinenealan): [VIDEO](https://youtu.be/M28oO5jmVQU) | [SLIDES](https://www.alankinene.com/r4ds_book_club/r4ds/r4ds-ch1_2.html#1)  
 
 Chapter 3 Data visualisation 
 
