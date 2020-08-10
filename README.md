@@ -32,7 +32,7 @@ TBD!
 *Group 2 [Africa/Europe] - (starting 2020-08-03) - Tuesdays, 19:30 CET (CEST)*
 
 - 2020-08-03 Chapter 2 - Introduction: Alan Kinene/shmuhamadd
-- 2020-08-10 Chapter 3 - Data visualisation: 
+- 2020-08-10 Chapter 3 - Data visualisation: Kamran Khan 
 - 2020-08-17 Chapter 4 -  Workflow: basics 
 
 <details>
@@ -51,7 +51,7 @@ Chapter 2 Introduction
 
 Chapter 3 Data visualisation 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- PRESENTER NAME: Kamran Khan  [SLIDES](https://github.com/camcaan/bookclub-R_for_Data_Science/blob/main/R4DS_Visualisation_slides.pptx)
 
 Chapter 4 Workflow: basics 
 
