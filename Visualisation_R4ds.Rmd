@@ -116,7 +116,7 @@ count(mpg, drv, class)
 A simple scatter plot does not show how many observations there are for each (`x`, `y`) value.
 As such, scatter plots work best for plotting a continuous x and a continuous y variable, and when all (`x`, `y`) values are unique.
 
-
+However, `geom_count()` which is similar to a scatterplot but uses the size of the points to show the number of observations at an (`x`, `y`) point.
 
 ```{r}
 ggplot(mpg, aes(x = class, y = drv)) +
@@ -149,7 +149,7 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy), colour = "blue")
 ```
 
-### Exercise 3.3.2 {.unnumbered .exercise data-number="3.3.2"}
+### Exercise 3.3.2 
 
 <div class="question">
 
@@ -198,7 +198,7 @@ glimpse(mpg)
 
 <div class="question">
 
-Map a continuous variable to color, size, and shape.
+Map a continuous variable to colour, size, and shape.
 How do these aesthetics behave differently for categorical vs. continuous variables?
 
 </div>
