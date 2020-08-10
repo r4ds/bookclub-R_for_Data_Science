@@ -14,31 +14,38 @@ This repo contains 3 main folders:
 
 ### Meeting Schedule 
 
-*Group 1 [Americas] - (started 2020-07-31) - Tuesdays, 8pm EDT/EST*
+*Cohort 1 [Americas] - (started 2020-07-31) - Fridays, 8pm E(D)T*
 
-- 2020-07-31 Chapter 2 - Introduction: Luke Morris
-- 2020-08-07 Chapter 3 - Data visualisation: 
-- 2020-08-14 Chapter 4 -  Workflow: basics 
+- 2020-08-14 Chapter 4 -  Workflow: basics: Erick
+- 2020-08-21 Chapter 5 -  Data visualisation: Silvia Canelon
+- 2020-08-28 Chapter 6 -  Workflow: scripts: 
 
 <details>
   <summary> Future Meetings </summary>
 
-TBD!
+- 2020-09-04 Chapter 7 - Exploratory Data Analysis
+- 2020-09-11 Chapter 8 - Intro to Wrangling
+- 2020-09-18 Chapter 9 & 10 - Tibbles
+- 2020-09-25 Chapter 11 - Data Import
 
 </details>
 <hr>
 
 
-*Group 2 [Africa/Europe] - (starting 2020-08-03) - Tuesdays, 19:30 CET (CEST)*
+*Cohort 2 [Africa/Europe] - (starting 2020-08-03) - Tuesdays, 19:30 CE(S)T*
 
-- 2020-08-03 Chapter 2 - Introduction: Alan Kinene/shmuhamadd
-- 2020-08-10 Chapter 3 - Data visualisation: Kamran Khan 
+
+- 2020-08-10 Chapter 3 - Data visualisation: Kamran Khan
 - 2020-08-17 Chapter 4 -  Workflow: basics 
+- 2020-08-21 Chapter 5 - Data visualisation: Presenter TBD
 
 <details>
   <summary> Future Meetings </summary>
 
-TBD!
+- 2020-08-24 Chapter 6 -  Workflow: scripts
+- 2020-09-07 Chapter 7 - Exploratory Data Analysis
+- 2020-09-14 Chapter 8 - Intro to Wrangling
+- 2020-09-21 Chapter 9 & 10 - Tibbles
 
 </details>
 <hr>
@@ -47,116 +54,119 @@ TBD!
 
 Chapter 2 Introduction 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- Luke Morris: [VIDEO](https://youtu.be/J8KHe2KAnUk) | [SLIDES](https://morrisluke.github.io/bookclub-R_for_Data_Science/Presentations/Week01/Cohort1/R4DS%20Ch%201-2%20-%20Morris.html)
+
+- [Alan Kinene](https://twitter.com/kinenealan): [VIDEO](https://youtu.be/M28oO5jmVQU) | [SLIDES](https://www.alankinene.com/r4ds_book_club/r4ds/r4ds-ch1_2.html#1)  
 
 Chapter 3 Data visualisation 
 
-- PRESENTER NAME: Kamran Khan  [SLIDES](https://github.com/camcaan/bookclub-R_for_Data_Science/blob/main/R4DS_Visualisation_slides.pptx)
+- Luke Morris: [VIDEO](https://youtu.be/TuWkMvQbYPI) | [Gina Reynolds' ggplot flipbook](https://evamaerey.github.io/ggplot_flipbook/ggplot_flipbook_xaringan.html)
+- Kamran Khan  [SLIDES](https://github.com/camcaan/bookclub-R_for_Data_Science/blob/main/R4DS_Visualisation_slides.pptx)
 
 Chapter 4 Workflow: basics 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 5 Data transformation 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 6 Workflow: scripts 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 7 Exploratory Data Analysis 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 8 Workflow: projects 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 9 Introduction 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 10 Tibbles 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 11 Data import 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 12 Tidy data 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 13 Relational data 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 14 Strings 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 15 Factors 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 16 Dates and times 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 17 Introduction 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 18 Pipes 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 19 Functions 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 20 Vectors 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 21 Iteration 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 22 Introduction 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 23 Model basics 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 24 Model building 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 25 Many models 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 26 Introduction 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 27 R Markdown 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 28 Graphics for communication 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 29 R Markdown formats 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
 
 Chapter 30 R Markdown workflow 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- 
