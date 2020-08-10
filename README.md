@@ -51,7 +51,7 @@ Chapter 2 Introduction
 
 Chapter 3 Data visualisation 
 
-- PRESENTER NAME: [SLIDES](link-to-slides)
+- PRESENTER NAME: Kamran Khan  [SLIDES](https://github.com/camcaan/bookclub-R_for_Data_Science/blob/main/R4DS_Visualisation_slides.pptx)
 
 Chapter 4 Workflow: basics 
 
