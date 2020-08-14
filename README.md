@@ -34,17 +34,17 @@ This repo contains 3 main folders:
 
 *Cohort 2 [Africa/Europe] - (starting 2020-08-03) - Tuesdays, 19:30 CE(S)T*
 
-- 2020-08-10 Chapter 3 - Data visualisation: Kamran KHAN
-- 2020-08-17 Chapter 4 -  Workflow: basics 
-- 2020-08-21 Chapter 5 - Data visualisation: Presenter TBD
+- 2020-08-17 Chapter 4 & 5 - Workflow & Data transformation: Niha Moopen
+- 2020-08-24 Chapter 6 & 7 - Workflow (scripts) & Exploratory Data Analysis: Shmuhammadd
+- 2020-08-31 Chapter 8 & 10 - Workflow (projects) & Tibbles: Kamran Khan
 
 <details>
   <summary> Future Meetings </summary>
 
-- 2020-08-24 Chapter 6 -  Workflow: scripts
-- 2020-09-07 Chapter 7 - Exploratory Data Analysis
-- 2020-09-14 Chapter 8 - Intro to Wrangling
-- 2020-09-21 Chapter 9 & 10 - Tibbles
+- 2020-09-07 Chapter 11 - Data import
+- 2020-09-14 Chapter 12 - Tidy data
+- 2020-09-21 Chapter 13 - Relational data
+- 2020-09-28 Chapter 14 - Strings
 
 </details>
 <hr>
@@ -60,6 +60,7 @@ Chapter 2 Introduction
 Chapter 3 Data visualisation 
 
 - Luke Morris: [VIDEO](https://youtu.be/TuWkMvQbYPI) | [Gina Reynolds' ggplot flipbook](https://evamaerey.github.io/ggplot_flipbook/ggplot_flipbook_xaringan.html)
+- Kamran Khan: [VIDEO](https://youtu.be/1Kl-Ma2Ajk8) | [SLIDES]()
 
 Chapter 4 Workflow: basics 
 
