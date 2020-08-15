@@ -65,7 +65,7 @@ Chapter 3 Data visualisation
 
 Chapter 4 Workflow: basics 
 
-- Erick Knackstedt: [VIDEO](https://youtu.be/utmMd8QEq7Y) | [SLIDES](https://morrisluke.github.io/bookclub-R_for_Data_Science/Presentations/Week03/Cohort1/Chapter4Slides.html) 
+- Erick Knackstedt: [VIDEO](https://youtu.be/utmMd8QEq7Y) | [SLIDES](https://github.com/r4ds/bookclub-R_for_Data_Science/Presentations/Week03/Cohort1/Chapter4Slides.html) 
 
 Chapter 5 Data transformation 
 
