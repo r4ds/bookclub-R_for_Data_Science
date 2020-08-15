@@ -16,17 +16,17 @@ This repo contains 3 main folders:
 
 *Cohort 1 [Americas] - (started 2020-07-31) - Fridays, 8pm E(D)T*
 
-- 2020-08-14 Chapter 4 -  Workflow: basics: Erick
 - 2020-08-21 Chapter 5 - Data visualisation: Silvia Canelon
-- 2020-08-28 Chapter 6 -  Workflow: scripts: Presenter TBD
+- 2020-08-28 Chapter 6 & 7 -  Workflow: scripts & Exploratory Data Analysis: Pavitra
+- 2020-09-04 Chapter 8 - Workflow: projects: Presenter TBD
 
 <details>
   <summary> Future Meetings </summary>
 
-- 2020-09-04 Chapter 7 - Exploratory Data Analysis
-- 2020-09-11 Chapter 8 - Intro to Wrangling
-- 2020-09-18 Chapter 9 & 10 - Tibbles
-- 2020-09-25 Chapter 11 - Data Import
+- 2020-09-11 - Chapter 9 & 10 - Intro to Wrangling & Tibbles
+- 2020-09-18 - Chapter 11 - Data Import
+- 2020-09-25 - Chapter 12 - Tidy Data
+- 2020-10-02 - Chapter 13 - Relational Data
 
 </details>
 <hr>
@@ -53,18 +53,19 @@ This repo contains 3 main folders:
 
 Chapter 2 Introduction 
 
-- Luke Morris: [VIDEO](https://youtu.be/J8KHe2KAnUk) | [SLIDES](https://morrisluke.github.io/bookclub-R_for_Data_Science/Presentations/Week01/Cohort1/R4DS%20Ch%201-2%20-%20Morris.html)
+- Luke Morris: [VIDEO](https://youtu.be/J8KHe2KAnUk) | [SLIDES](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week01/Cohort1/R4DS%20Ch%201-2%20-%20Morris.html)
 
 - [Alan Kinene](https://twitter.com/kinenealan): [VIDEO](https://youtu.be/M28oO5jmVQU) | [SLIDES](https://www.alankinene.com/r4ds_book_club/r4ds/r4ds-ch1_2.html#1)  
 
 Chapter 3 Data visualisation 
 
 - Luke Morris: [VIDEO](https://youtu.be/TuWkMvQbYPI) | [Gina Reynolds' ggplot flipbook](https://evamaerey.github.io/ggplot_flipbook/ggplot_flipbook_xaringan.html)
+
 - Kamran Khan: [VIDEO](https://youtu.be/1Kl-Ma2Ajk8) | [SLIDES]()
 
 Chapter 4 Workflow: basics 
 
-- 
+- Erick Knackstedt: [VIDEO](https://youtu.be/utmMd8QEq7Y) | [SLIDES](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week03/Cohort1/Chapter4Slides.html) 
 
 Chapter 5 Data transformation 
 
