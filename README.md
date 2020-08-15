@@ -17,7 +17,7 @@ This repo contains 3 main folders:
 *Cohort 1 [Americas] - (started 2020-07-31) - Fridays, 8pm E(D)T*
 
 - 2020-08-14 Chapter 4 -  Workflow: basics: Erick
-- 2020-08-21 Chapter 5 - Data visualisation: Silvia Canelon
+- 2020-08-21 Chapter 5 - Data transformation: Silvia Canelon
 - 2020-08-28 Chapter 6 -  Workflow: scripts: Presenter TBD
 
 <details>
