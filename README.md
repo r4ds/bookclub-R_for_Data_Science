@@ -53,7 +53,7 @@ This repo contains 3 main folders:
 
 Chapter 2 Introduction 
 
-- Luke Morris: [VIDEO](https://youtu.be/J8KHe2KAnUk) | [SLIDES](https://morrisluke.github.io/bookclub-R_for_Data_Science/Presentations/Week01/Cohort1/R4DS%20Ch%201-2%20-%20Morris.html)
+- Luke Morris: [VIDEO](https://youtu.be/J8KHe2KAnUk) | [SLIDES]https://github.com/r4ds/bookclub-R_for_Data_Science/blob/main/Presentations/Week01/Cohort1/R4DS%20Ch%201-2%20-%20Morris.html)
 
 - [Alan Kinene](https://twitter.com/kinenealan): [VIDEO](https://youtu.be/M28oO5jmVQU) | [SLIDES](https://www.alankinene.com/r4ds_book_club/r4ds/r4ds-ch1_2.html#1)  
 
@@ -65,7 +65,7 @@ Chapter 3 Data visualisation
 
 Chapter 4 Workflow: basics 
 
-- Erick Knackstedt: [VIDEO](https://youtu.be/utmMd8QEq7Y) | [SLIDES](https://github.com/r4ds/bookclub-R_for_Data_Science/Presentations/Week03/Cohort1/Chapter4Slides.html) 
+- Erick Knackstedt: [VIDEO](https://youtu.be/utmMd8QEq7Y) | [SLIDES](https://github.com/r4ds/bookclub-R_for_Data_Science/blob/main/Presentations/Week03/Cohort1/Chapter4Slides.html) 
 
 Chapter 5 Data transformation 
 
