@@ -16,17 +16,17 @@ This repo contains 3 main folders:
 
 *Cohort 1 [Americas] - (started 2020-07-31) - Fridays, 8pm E(D)T*
 
-- 2020-08-21 Chapter 5 - Data visualisation: Silvia Canelon
 - 2020-08-28 Chapter 6 & 7 -  Workflow: scripts & Exploratory Data Analysis: Pavitra
 - 2020-09-04 Chapter 8 - Workflow: projects: Presenter TBD
+- 2020-09-11 Chapter 9 & 10 - Intro to Wrangling & Tibbles: Presenter TBD
 
 <details>
   <summary> Future Meetings </summary>
 
-- 2020-09-11 - Chapter 9 & 10 - Intro to Wrangling & Tibbles
 - 2020-09-18 - Chapter 11 - Data Import
 - 2020-09-25 - Chapter 12 - Tidy Data
 - 2020-10-02 - Chapter 13 - Relational Data
+- 2020-10-09 - Chapter 14 - Strings
 
 </details>
 <hr>
@@ -69,7 +69,7 @@ Chapter 4 Workflow: basics
 
 Chapter 5 Data transformation 
 
-- 
+- Silvia Canelón: [VIDEO](https://youtu.be/p-h758aKWQY) | [SLIDES](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week04/Cohort1/Chapter5Slides.html)
 
 Chapter 6 Workflow: scripts 
 
