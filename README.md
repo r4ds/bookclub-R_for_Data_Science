@@ -66,10 +66,11 @@ Chapter 3 Data visualisation
 Chapter 4 Workflow: basics 
 
 - Erick Knackstedt: [VIDEO](https://youtu.be/utmMd8QEq7Y) | [SLIDES](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week03/Cohort1/Chapter4Slides.html) 
+- Neha Moopen: [VIDEO](https://youtu.be/uFseYWMo5jg) | [SLIDES]()
 
 Chapter 5 Data transformation 
 
-- 
+- Neha Moopen: [VIDEO Pt.1](https://youtu.be/uFseYWMo5jg), [VIDEO Pt.2](https://youtu.be/VXzFEZ3LMJU)| [SLIDES]()
 
 Chapter 6 Workflow: scripts 
 
