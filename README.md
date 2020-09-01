@@ -15,15 +15,18 @@ This repo contains 3 main folders:
 ### Meeting Schedule 
 
 *Cohort 1 [Americas] - (started 2020-07-31) - Fridays, 8pm E(D)T*
+
 - 2020-09-04 Chapter 8 - Workflow: projects: Presenter TBD
 - 2020-09-11 - Chapter 9 & 10 - Intro to Wrangling & Tibbles
 - 2020-09-18 - Chapter 11 - Data Import
+
 
 <details>
   <summary> Future Meetings </summary>
 
 - 2020-09-25 - Chapter 12 - Tidy Data
 - 2020-10-02 - Chapter 13 - Relational Data
+- 2020-10-09 - Chapter 14 - Strings
 
 </details>
 <hr>
@@ -67,8 +70,8 @@ Chapter 4 Workflow: basics
 
 Chapter 5 Data transformation 
 
+- Silvia Canelón: [VIDEO](https://youtu.be/p-h758aKWQY) | [SLIDES](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week04/Cohort1/Chapter5Slides.html)
 - Neha Moopen: [VIDEO Pt.1](https://youtu.be/uFseYWMo5jg), [VIDEO Pt.2](https://youtu.be/VXzFEZ3LMJU)| [SLIDES]()
-- Silvia Canelon: VIDEO | SLIDES
 
 Chapter 6 Workflow: scripts
 
