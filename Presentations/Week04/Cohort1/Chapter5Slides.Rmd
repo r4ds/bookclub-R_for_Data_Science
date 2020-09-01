@@ -199,6 +199,7 @@ knitr::include_graphics('https://d33wubrfki0l68.cloudfront.net/01f4b6d39d2be8269
 
 `filter()` only includes rows where the condition is `TRUE` (i.e. it includes both `FALSE` and `NA` values)
 
+
 --
 
 If you want to preserve missing values you must ask for them explicitly:
