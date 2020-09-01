@@ -15,16 +15,13 @@ This repo contains 3 main folders:
 ### Meeting Schedule 
 
 *Cohort 1 [Americas] - (started 2020-07-31) - Fridays, 8pm E(D)T*
-
-- 2020-08-21 Chapter 5 - Data visualisation: Silvia Canelon
-- 2020-08-28 Chapter 6 & 7 -  Workflow: scripts & Exploratory Data Analysis: Pavitra
 - 2020-09-04 Chapter 8 - Workflow: projects: Presenter TBD
+- 2020-09-11 - Chapter 9 & 10 - Intro to Wrangling & Tibbles
+- 2020-09-18 - Chapter 11 - Data Import
 
 <details>
   <summary> Future Meetings </summary>
 
-- 2020-09-11 - Chapter 9 & 10 - Intro to Wrangling & Tibbles
-- 2020-09-18 - Chapter 11 - Data Import
 - 2020-09-25 - Chapter 12 - Tidy Data
 - 2020-10-02 - Chapter 13 - Relational Data
 
@@ -34,16 +31,16 @@ This repo contains 3 main folders:
 
 *Cohort 2 [Africa/Europe] - (starting 2020-08-03) - Tuesdays, 19:30 CE(S)T*
 
-- 2020-08-17 Chapter 4 & 5 - Workflow & Data transformation: Niha Moopen
+- 2020-08-17 Chapter 4 & 5 - Workflow & Data transformation: Neha Moopen
 - 2020-08-24 Chapter 6 & 7 - Workflow (scripts) & Exploratory Data Analysis: Shmuhammadd
 - 2020-08-31 Chapter 8 & 10 - Workflow (projects) & Tibbles: Kamran Khan
+- 2020-09-07 Chapter 11 - Data import
+- 2020-09-14 Chapter 12 - Tidy data
+- 2020-09-21 Chapter 13 - Relational data
 
 <details>
   <summary> Future Meetings </summary>
 
-- 2020-09-07 Chapter 11 - Data import
-- 2020-09-14 Chapter 12 - Tidy data
-- 2020-09-21 Chapter 13 - Relational data
 - 2020-09-28 Chapter 14 - Strings
 
 </details>
@@ -71,14 +68,15 @@ Chapter 4 Workflow: basics
 Chapter 5 Data transformation 
 
 - Neha Moopen: [VIDEO Pt.1](https://youtu.be/uFseYWMo5jg), [VIDEO Pt.2](https://youtu.be/VXzFEZ3LMJU)| [SLIDES]()
+- Silvia Canelon: VIDEO | SLIDES
 
-Chapter 6 Workflow: scripts 
+Chapter 6 Workflow: scripts
 
-- 
+- Pavitra Chakravarty: VIDEO | SLIDES
 
 Chapter 7 Exploratory Data Analysis 
 
-- 
+- Pavitra Chakravarty: VIDEO | SLIDES
 
 Chapter 8 Workflow: projects 
 
