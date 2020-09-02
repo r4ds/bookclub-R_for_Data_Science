@@ -16,17 +16,17 @@ This repo contains 3 main folders:
 
 *Cohort 1 [Americas] - (started 2020-07-31) - Fridays, 8pm E(D)T*
 
-- 2020-09-04 Chapter 8 - Workflow: projects: Presenter TBD
-- 2020-09-11 - Chapter 9 & 10 - Intro to Wrangling & Tibbles
-- 2020-09-18 - Chapter 11 - Data Import
+- 2020-09-11 Chapter 8 - Workflow: projects: Presenter TBD
+- 2020-09-18 - Chapter 9 & 10 - Intro to Wrangling & Tibbles
+- 2020-09-25 - Chapter 11 - Data Import
 
 
 <details>
   <summary> Future Meetings </summary>
 
-- 2020-09-25 - Chapter 12 - Tidy Data
-- 2020-10-02 - Chapter 13 - Relational Data
-- 2020-10-09 - Chapter 14 - Strings
+- 2020-10-02 - Chapter 12 - Tidy Data
+- 2020-10-09 - Chapter 13 - Relational Data
+- 2020-10-17 - Chapter 14 - Strings
 
 </details>
 <hr>
@@ -75,11 +75,11 @@ Chapter 5 Data transformation
 
 Chapter 6 Workflow: scripts
 
-- Pavitra Chakravarty: VIDEO | SLIDES
+- Pavitra Chakravarty: [VIDEO](https://www.youtube.com/watch?v=mlIgAWOLVuQ&feature=youtu.be) | [SLIDES](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week05/Cohort1/Chapter6Slides.html)
 
 Chapter 7 Exploratory Data Analysis 
 
-- Pavitra Chakravarty: VIDEO | SLIDES
+- Pavitra Chakravarty: [VIDEO](https://www.youtube.com/watch?v=mlIgAWOLVuQ&feature=youtu.be) | [SLIDES](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week05/Cohort1/Chapter6Slides.html)
 
 Chapter 8 Workflow: projects 
 
