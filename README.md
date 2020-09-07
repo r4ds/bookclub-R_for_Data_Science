@@ -35,7 +35,7 @@ This repo contains 3 main folders:
 *Cohort 2 [Africa/Europe] - (starting 2020-08-03) - Tuesdays, 19:30 CE(S)T*
 
 - 2020-08-17 Chapter 4 & 5 - Workflow & Data transformation: Neha Moopen
-- 2020-08-24 Chapter 6 & 7 - Workflow (scripts) & Exploratory Data Analysis: Shmuhammadd
+- 2020-08-24 Chapter 6 & 7 - Workflow (scripts) & Exploratory Data Analysis: Shamsuddeen Muhammad
 - 2020-08-31 Chapter 8 & 10 - Workflow (projects) & Tibbles: Kamran Khan
 - 2020-09-07 Chapter 11 - Data import
 - 2020-09-14 Chapter 12 - Tidy data
@@ -76,10 +76,12 @@ Chapter 5 Data transformation
 Chapter 6 Workflow: scripts
 
 - Pavitra Chakravarty: [VIDEO](https://www.youtube.com/watch?v=mlIgAWOLVuQ&feature=youtu.be) | [SLIDES](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week05/Cohort1/Chapter6Slides.html)
+- Shamsuddeen Muhammad: [VIDEO](https://youtu.be/SfAiSNKdAXA) | [SLIDES]()
 
 Chapter 7 Exploratory Data Analysis 
 
 - Pavitra Chakravarty: [VIDEO](https://www.youtube.com/watch?v=mlIgAWOLVuQ&feature=youtu.be) | [SLIDES](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week05/Cohort1/Chapter6Slides.html)
+- Shamsuddeen Muhammad: [VIDEO](https://youtu.be/SfAiSNKdAXA) | [SLIDES]()
 
 Chapter 8 Workflow: projects 
 
