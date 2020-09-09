@@ -1,0 +1,201 @@
+---
+title: "R for Data Science"
+subtitle: "Chapter 4: Workflow basics"
+author: "Erick Knackstedt"
+institute: "@Eknackstedt"
+date: " `r Sys.Date()` "
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["xaringan-themer.css","custom.css"]
+    includes:
+      after_body: insert-logo.html
+---
+
+
+```{r xaringan-themer, include = FALSE}
+library(xaringanthemer)
+style_mono_light(
+  base_color = "#3092FF",
+  header_font_google = google_font("Josefin Sans"),
+  text_font_google   = google_font("Montserrat", "300", "300i"),
+  code_font_google   = google_font("Droid Mono"),
+)
+```
+
+
+# Outline
+
+- Coding basics
+
+--
+
+- What's in a name?
+
+--
+
+- Calling functions
+
+--
+
+- Exercises
+
+---
+
+
+## Coding basics 
+
+What is a fundamental use for R?
+
+--
+
+- Use R as a calculator
+
+--
+
+What step is a basic building block in programming? 
+
+--
+
+- Create new objects
+
+--
+
+How do you create new objects?
+
+--
+
+```{r eval=FALSE, include=TRUE}
+object_name <- value
+```
+
+--
+
+> When reading that code say "object name gets value" in your head.
+
+---
+
+## What's in a name?
+
+How do you prefer to write object names? Does it matter?
+
+--
+
+Coding style matters for human reading comprehension. **snake_case** is recommended when an object name has two or more words. 
+
+--
+
+How can you inspect an object's value?
+
+--
+
+By typing its name.
+
+Naming matters for this reason. Keep names descriptive and succinct to ease recall and avoid error. 
+
+
+---
+
+## Calling functions
+
+How do you call a built in function?
+
+--
+
+```{r eval=FALSE, include=TRUE}
+function_name(arg1 = val1, arg2 = val2, ...)
+```
+
+--
+
+How does RStudio augment your ability to program?
+
+--
+
+With lots of helpful shortcuts. 
+
+- Start typing and press tab for auto-complete options. 
+- ↑/↓ to select an option.
+- F1 to access the help page.
+
+--
+
+When you assign a name a value the value is not automatically printed out. Can one call assign and print the value?
+
+--
+
+Yes. Wrap the assignment code in parenthesis. 
+
+```{r}
+(y <- seq(1, 10, length.out = 5))
+```
+
+---
+
+## Exercises
+
+> 1. Why does this code not work?
+
+```{r eval=FALSE, include=TRUE}
+my_variable <- 10
+my_varıable
+#> Error in eval(expr, envir, enclos): object 'my_varıable' not found
+```
+
+--
+
+The object name was misspelled! 
+
+---
+### Exercises cont.
+
+> 2. Tweak each of the following R commands so that they run correctly:
+
+--
+
+```{r eval=FALSE, include=TRUE}
+ggplot(dota = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy))
+```
+
+--
+
+```{r eval=FALSE, include=TRUE}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy))
+```
+
+--
+
+``` {r eval=FALSE, include=TRUE}
+fliter(mpg, cyl = 8)
+```
+
+--
+
+```{r eval=FALSE, include=TRUE}
+filter(mpg, cyl == 8)
+```
+
+--
+
+``` {r eval=FALSE, include=TRUE}
+filter(diamond, carat > 3)
+```
+
+--
+
+```{r eval=FALSE, include=TRUE}
+filter(diamonds, carat > 3)
+```
+
+---
+
+### Exercises cont.
+
+> 3. Press Alt + Shift + K. What happenes? How can you get to the same place using the menus?
+
+--
+
+This opens up the keyboard shortcuts help page. You can access this by clicking on Help on the ribbon in the upper left hand corner of RStudio. 
+
