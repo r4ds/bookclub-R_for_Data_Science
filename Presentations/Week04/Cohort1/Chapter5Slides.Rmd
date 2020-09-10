@@ -1,0 +1,463 @@
+---
+title: "R for Data Science"
+subtitle: "Chapter 5: Data Transformation"
+author: "Silvia Canelón"
+institute: "@spcanelon"
+date: " `r Sys.Date()` "
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["xaringan-themer.css","custom.css"]
+    includes:
+      after_body: insert-logo.html
+    nature:
+      ratio: "16:9"
+---
+
+
+```{r xaringan-themer, include = FALSE}
+library(xaringanthemer)
+library(knitr)
+# style_mono_light(
+#   base_color = "#3092FF",
+#   header_font_google = google_font("Lora"),
+#   text_font_google   = google_font("Fira Sans", "450", "450i"),
+#   code_font_google   = google_font("Roboto Mono"),
+# )
+```
+
+```{r, eval=TRUE, include=FALSE}
+library(tidyverse)
+library(nycflights13)
+flights <- nycflights13::flights
+```
+
+
+# Outline
+
+--
+
+- Introduction
+
+--
+
+- Filter rows with `filter()`
+
+--
+
+- Arrange rows with `arrange()`
+
+--
+
+- Select columns with `select()`
+
+--
+
+- Add new variables with `mutate()`
+
+--
+
+- Grouped summaries with `summarize()`
+
+--
+
+- Grouped mutate (and filters)
+
+---
+
+
+## Introduction 
+
+### Data transformation helps you get the data in exactly the right form you need. 
+
+--
+
+- create new variables
+- create summaries
+- rename variables
+- reorder observations
+- ...and more!
+
+--
+
+### This chapter uses the `nycflights13` `r emo::ji('package')`
+
+- Data set includes 336,776 flights that departed from New York City in 2013 
+- US Bureau of Transportation Statistics
+
+---
+
+## Introduction
+
+```{r}
+flights
+```
+
+
+
+
+---
+
+## Introduction
+
+```{r}
+head(flights, 4)
+```
+
+--
+
+.pull-left[
+- `int`: integers 
+- `dbl`: doubles, or real numbers
+- `chr`: character vectors, or strings 
+- `dttm`: date-times (a date + a time)
+
+]
+
+--
+
+.pull-right[
+- `lgl`: logical, vectors with only TRUE or FALSE
+- `fctr`: factors, categorical variables
+- `date`: dates
+]
+
+---
+
+## Introduction
+
+### **dplyr** basics
+
+- Pick observations by their values (`filter()`).
+- Reorder the rows (`arrange()`).
+- Pick variables by their names (`select()`).
+- Create new variables with functions of existing variables (`mutate()`).
+- Collapse many values down to a single summary (`summarise()`).
+--
+
+- **+** `group_by()` which gets the above functions to operate group-by-group rather than on the entire dataset
+
+### How do they work?
+
+1. First argument is data frame
+2. Other arguments describe what to do with the data frame
+3. Result is a new data frame!
+
+
+---
+
+## Filter rows with `filter()`
+
+Lets you subset observations based on their values.
+
+--
+
+```{r}
+filter(flights, month == 1, day == 1)
+```
+
+---
+
+### Comparisons
+
+R provides the standard suite of comparison operators:
+- `>`
+- `>=`
+- `<`
+- `<=`
+- `!=` (not equal)
+- `==` (equal)
+
+---
+
+### Logical operators
+
+- `&` is "and"
+- `|` is "or"
+- `!` is "not"
+
+.center[
+```{r, echo=FALSE, out.height=400}
+knitr::include_graphics('https://d33wubrfki0l68.cloudfront.net/01f4b6d39d2be8269740a3ad7946faa79f7243cf/8369a/diagrams/transform-logical.png')
+```
+]
+
+---
+
+### Missing values
+
+- Missing values a.k.a. `NA`s a.k.a. "not availables" represent an unknown value
+
+--
+
+- They are contagious! `r emo::ji('microbe')` ...meaning almost any operation involving an unknown value will also be unknown 
+
+
+--
+
+### Also important because...
+
+`filter()` only includes rows where the condition is `TRUE` (i.e. it includes both `FALSE` and `NA` values)
+
+
+--
+
+If you want to preserve missing values you must ask for them explicitly:
+```{r, eval = FALSE, echo=TRUE}
+filter(df, is.na(x) | x > 1)
+```
+
+---
+
+### Ex: Find all flights that were operated by United, American, or Delta
+
+```{r, eval=TRUE, include = TRUE, echo=FALSE}
+head(flights, 2)
+```
+
+--
+
+```{r, eval=TRUE, include=TRUE, echo=FALSE}
+unique(flights$carrier)
+```
+
+--
+
+```{r, eval=FALSE, include = TRUE}
+# option 1
+flights %>% filter(carrier = "UA" | "AA" | "DL")
+
+# option 2
+flights %>% filter(carrier == "UA" | "AA" | "DL")
+
+# option 3
+flights %>% filter(carrier == "UA" | carrier == "AA" | carrier == "DL")
+
+# option 4
+flights %>% filter(carrier %in% c("UA", "AA", "DL"))
+```
+
+---
+
+#### Ex: Find all flights that were operated by United, American, or Delta
+
+```{r, eval = FALSE, include=TRUE, echo=TRUE}
+flights %>% filter(carrier = "UA" | "AA" | "DL")
+```
+> Error: Problem with `filter()` input `..1`. x Input `..1` is named. ℹ This usually means that you've used `=` instead of `==`. ℹ Did you mean `carrier == "UA" | "AA" | "DL"`?
+
+---
+#### Ex: Find all flights that were operated by United, American, or Delta
+
+```{r eval=FALSE, include=TRUE, echo=TRUE, warning=TRUE, message=TRUE}
+flights %>% filter(carrier == "UA" | "AA" | "DL")
+```
+> Error: Problem with `filter()` input `..1`. x operations are possible only for numeric, logical or complex types ℹ Input `..1` is `carrier == "UA" | "AA" | "DL"`.
+
+---
+#### Ex: Find all flights that were operated by United, American, or Delta
+
+```{r}
+flights %>% filter(carrier == "UA" | carrier == "AA" | carrier == "DL")
+```
+
+---
+#### Ex: Find all flights that were operated by United, American, or Delta
+
+```{r}
+flights %>% filter(carrier %in% c("UA", "AA", "DL"))
+```
+
+---
+
+## Arrange rows with `arrange()`
+
+### Changes the order of the rows
+Takes a data frame and orders it by a set of column names (or more complicated expressions)
+
+--
+
+- orders a column in ascending order by default
+- `desc()` can be used to reorder a column in `desc`ending order
+--
+
+- **Note:** missing values (`NA`s) are always sorted at the end
+
+---
+
+### Ex: Sort flights to find the most delayed flights. Find the flights that left earliest.
+
+```{r}
+flights
+```
+
+---
+
+#### Sort flights to find the most delayed flights
+```{r eval=FALSE}
+arrange(flights, desc(dep_delay))
+```
+
+```{r, echo=FALSE}
+head(arrange(flights, desc(dep_delay)),3)
+```
+--
+#### Find the flights that left earliest
+```{r eval=FALSE}
+arrange(flights, dep_delay)
+```
+
+```{r echo=FALSE}
+head(arrange(flights, dep_delay),3)
+```
+
+---
+
+## Select columns with `select()`
+
+Sometimes we get data sets that have hundreds or thousands of variables `r emo::ji('grimacing')`
+
+--
+
+`select()` gives us a way to narrow down to only those variables we're interested in! `r emo::ji('tada')`
+
+--
+
+#### Helper functions include
+- `starts_with("abc")`: matches names that begin with “abc”.
+- `ends_with("xyz")`: matches names that end with “xyz”.
+- `contains("ijk")`: matches names that contain “ijk”.
+- `matches("(.)\\1")`: selects variables that match a regular expression. This one matches any variables that contain repeated characters (more in **Chapter 14: Strings**)
+- `num_range("x", 1:3)`: matches x1, x2 and x3.
+--
+
+- `r emo::ji("star")` `everything()`: useful when you want to move a few variables to the start of the data frame
+
+---
+
+### Ex: Brainstorm as many ways as possible to select `dep_time`, `dep_delay`, `arr_time`, and `arr_delay` from flights.
+
+```{r}
+flights
+```
+
+---
+#### Ex: Brainstorm as many ways as possible to select `dep_time`, `dep_delay`, `arr_time`, and `arr_delay` from flights.
+
+```{r}
+select(flights, dep_time, dep_delay, arr_time, arr_delay)
+```
+
+---
+#### Ex: Brainstorm as many ways as possible to select `dep_time`, `dep_delay`, `arr_time`, and `arr_delay` from flights.
+
+```{r}
+select(flights, starts_with("dep") | starts_with("arr"))
+```
+
+---
+#### Ex: Brainstorm as many ways as possible to select `dep_time`, `dep_delay`, `arr_time`, and `arr_delay` from flights.
+
+```{r}
+select(flights, ends_with("time") | ends_with("delay"))
+```
+
+## Not quite! Why?
+
+---
+
+## Add new variables with `mutate()`
+
+Helps you add new columns that are functions of existing columns
+
+--
+
+- always adds columns at the end of your dataset
+--
+
+- if you want to only keep the new variables, you can use `transmute()`
+
+---
+
+### Add new variables with `mutate()`
+
+.pull-left[
+Can be used with _arithmetic operators_
+- `+`
+- `-`
+- `*`
+- `/`
+- `^`
+- `sum()`
+]
+
+--
+
+.pull-right[
+
+_modular arithmetic_
+- `%/%` (integer division)
+- `%%` (remainder)
+- `log()`
+- `log2()`
+- `log10()`
+]
+
+--
+
+.pull-left[
+
+- _logical comparisons_: `<`, `<=`, `>`, `>=`, `!=`
+- _offsets_: `lead()` and `lag()`
+- _ranking_: `min_rank()`, `row_number()`, `dense_rank()`, and more!
+]
+
+---
+
+## Grouped summaries with `summarize()`
+
+Collapses a data frame into a single row and more useful when combined with `group_by()`
+
+--
+
+Arguably **most** useful when used with the pipe `%>%` operator
+
+--
+
+Go from this:
+```{r eval=FALSE}
+by_dest <- group_by(flights, dest)
+delay <- summarize(by_dest, count = n(),
+                   dis = mean(distance, na.rm = TRUE),
+                   delay = mean(arr_del, na.rm = TRUE))
+```
+
+--
+To this! `r emo::ji('tada')`
+```{r eval=FALSE}
+flights %>% 
+  group_by(dest) %>% 
+  summarize(by_dest, count = n(),
+            dis = mean(distance, na.rm = TRUE),
+            delay = mean(arr_del, na.rm = TRUE))
+```
+
+#### Spot the differences!
+
+---
+
+## Grouped mutate (and filters)
+
+Most useful in combination with `summarize()`
+
+--
+
+For example:
+
+```{r}
+popular_dests <- flights %>%
+  group_by(dest) %>%
+  filter(n() > 365)
+```
+
+### What does it do?
