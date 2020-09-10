@@ -20,7 +20,6 @@ This repo contains 3 main folders:
 - 2020-09-18 - Chapter 9 & 10 - Intro to Wrangling & Tibbles
 - 2020-09-25 - Chapter 11 - Data Import
 
-
 <details>
   <summary> Future Meetings </summary>
 
@@ -60,8 +59,7 @@ Chapter 2 Introduction
 Chapter 3 Data visualisation 
 
 - Luke Morris: [VIDEO](https://youtu.be/TuWkMvQbYPI) | [Gina Reynolds' ggplot flipbook](https://evamaerey.github.io/ggplot_flipbook/ggplot_flipbook_xaringan.html)
-
-- Kamran Khan: [VIDEO](https://youtu.be/1Kl-Ma2Ajk8) | [SLIDES]()
+- Kamran Khan  [SLIDES](https://github.com/camcaan/bookclub-R_for_Data_Science/blob/main/R4DS_Visualisation_slides.pptx) | [VIDEO](https://youtu.be/1Kl-Ma2Ajk8)
 
 Chapter 4 Workflow: basics 
 
