@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>R for Data Science</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Luke Morris" />
+    <meta name="date" content="2020-09-11" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="custom.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# R for Data Science
+## Chapter 8-10: Projects workflow, Intro to Wrangle, &amp; Tibbles
+### Luke Morris
+### <span class="citation">@LukeMorris</span>
+### 2020-09-11
+
+---
+
+
+
+
+
+# Ch. 8 -- Workflow: Projects
+
+PROTIP: Tweak these RStudio settings to ensure reproducibility on any computer!
+
+![screenshot](https://d33wubrfki0l68.cloudfront.net/7fa44a5471d40025344176ede4169c5ad3159482/1577f/screenshots/rstudio-workspace.png)
+
+---
+
+## Why use RStudio's Projects setup?
+
+- Everything is contained in one directory (scripts, datasets, etc.)
+
+- Keep projects clean and separate
+
+- the `.rproj` filetype opens everything up in the right place in RStudio
+
+---
+
+# Ch. 9 -- Intro: Wrangle 
+
+![data process](https://d33wubrfki0l68.cloudfront.net/e3f9e555d0035731c04642ceb58a03fb84b98a7d/4f070/diagrams/data-science-wrangle.png)
+
+If you want to use your data for modeling or visualizing, you're going to have to wrangle it into an R-friendly format first.
+
+In the coming chapters we'll learn how to
+
+- Import your data
+
+- Format it for usability in R
+
+- Transform your data to prepare it for whatever you want to do with it
+
+---
+
+# Ch. 10 -- Tibbles
+
+### What's a Tibble?
+
+- Tibbles are data frames, but they tweak some older behaviors to make life a little easier.
+
+- Tibbles are one of the unifying features of the tidyverse.
+
+---
+
+## Creating a Tibble
+
+The tibble package is part of the `tidyverse` library, or you can call it up individually with `library(tibble)`
+
+--
+
+`as_tibble()` can turn a regular data frame into a tibble
+
+
+```r
+as_tibble(iris)
+```
+
+```
+## # A tibble: 150 x 5
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
+##  1          5.1         3.5          1.4         0.2 setosa 
+##  2          4.9         3            1.4         0.2 setosa 
+##  3          4.7         3.2          1.3         0.2 setosa 
+##  4          4.6         3.1          1.5         0.2 setosa 
+##  5          5           3.6          1.4         0.2 setosa 
+##  6          5.4         3.9          1.7         0.4 setosa 
+##  7          4.6         3.4          1.4         0.3 setosa 
+##  8          5           3.4          1.5         0.2 setosa 
+##  9          4.4         2.9          1.4         0.2 setosa 
+## 10          4.9         3.1          1.5         0.1 setosa 
+## # ... with 140 more rows
+```
+
+---
+
+## Creating a Tibble
+
+Vectors can also be tibble-ized
+
+
+```r
+tibble(
+  x = 1:5, 
+  y = 1, 
+  z = x ^ 2 + y
+)
+```
+
+```
+## # A tibble: 5 x 3
+##       x     y     z
+##   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1     1     1     2
+## 2     2     1     5
+## 3     3     1    10
+## 4     4     1    17
+## 5     5     1    26
+```
+
+---
+
+## Tibble quirks
+
+#### Unlike data frames, tibbles don't ...
+
+- Change data input types (e.g. converting strings to factors)
+
+- Change the names of variables
+
+- Create row names
+
+Also, you can create column names that don't match R syntax by surrounding the name in backticks.
+
+---
+
+## Transposed Tibble = Tribble
+
+- Column headings are defined by formulas (i.e. they start with ~)
+
+- Entries are separated by commas
+
+
+```r
+tribble(
+  ~x, ~y, ~z,
+  #--|--|----
+  "a", 2, 3.6,
+  "b", 1, 8.5
+)
+```
+
+```
+## # A tibble: 2 x 3
+##   x         y     z
+##   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 a         2   3.6
+## 2 b         1   8.5
+```
+
+---
+
+## Tibbles vs. Data Frames
+
+#### When printing ... 
+
+- Tibbles show only the first 10 rows
+
+- Tibbles limit column printing to what fits on a screen
+
+- Each column reports its structure type
+
+But if you ever need to print more than the initial view shows, you can customize the output.
+
+---
+
+## Tibbles vs Data Frames
+
+#### When subsetting ...
+
+- Tibbles never do partial matching, and they will generate a warning if the column you are trying to access does not exist.
+
+- `[[` can extract by name or position
+
+- `$` only extracts by name
+
+
+```r
+df &lt;- tibble(
+  x = runif(5),
+  y = rnorm(5)
+)
+
+# Extract by name
+df$x
+```
+
+```
+## [1] 0.3877998 0.1538040 0.6713843 0.8290710 0.4560683
+```
+
+```r
+df[["x"]]
+```
+
+```
+## [1] 0.3877998 0.1538040 0.6713843 0.8290710 0.4560683
+```
+
+---
+
+## Tibbles vs Data Frames
+
+#### When subsetting ...
+
+
+```r
+df &lt;- tibble(
+  x = runif(5),
+  y = rnorm(5)
+)
+
+# Extract by position
+df[[1]]
+```
+
+```
+## [1] 0.28681595 0.04081623 0.99156448 0.09045217 0.80943639
+```
+
+** NOTE :To use these in a pipe, you’ll need to use the special placeholder `.`: **
+
+
+```r
+df %&gt;% .$x
+```
+
+```
+## [1] 0.28681595 0.04081623 0.99156448 0.09045217 0.80943639
+```
+
+```r
+df %&gt;% .[["x"]]
+```
+
+```
+## [1] 0.28681595 0.04081623 0.99156448 0.09045217 0.80943639
+```
+
+---
+
+## Tibbles vs. Data Frames
+
+
+```r
+df &lt;- data.frame(abc = 1, xyz = "a")
+tibbledf &lt;- as_tibble(df)
+
+df
+```
+
+```
+##   abc xyz
+## 1   1   a
+```
+
+```r
+tibbledf
+```
+
+```
+## # A tibble: 1 x 2
+##     abc xyz  
+##   &lt;dbl&gt; &lt;chr&gt;
+## 1     1 a
+```
+
+---
+
+## Tibbles vs. Data Frames
+
+
+```r
+df$x
+```
+
+```
+## [1] "a"
+```
+
+```r
+tibbledf$x
+```
+
+```
+## Warning: Unknown or uninitialised column: `x`.
+```
+
+```
+## NULL
+```
+
+```r
+df[, "xyz"]
+```
+
+```
+## [1] "a"
+```
+
+```r
+tibbledf[, "xyz"]
+```
+
+```
+## # A tibble: 1 x 1
+##   xyz  
+##   &lt;chr&gt;
+## 1 a
+```
+
+---
+
+## Tibbles vs. Data Frames
+
+
+```r
+df[, c("abc", "xyz")]
+```
+
+```
+##   abc xyz
+## 1   1   a
+```
+
+```r
+tibbledf[, c("abc", "xyz")]
+```
+
+```
+## # A tibble: 1 x 2
+##     abc xyz  
+##   &lt;dbl&gt; &lt;chr&gt;
+## 1     1 a
+```
+
+---
+
+# See you next week!
+
+Happy data wrangling! (art by [Allison Horst](https://github.com/allisonhorst/stats-illustrations))
+
+![wrangling](https://raw.githubusercontent.com/allisonhorst/stats-illustrations/master/rstats-artwork/data_cowboy.png)
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create();
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();</script>
+<style>
+.logo {
+  background-image: url(r4ds.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  width: 110px;
+  height: 128px;
+  z-index: 0;
+}
+</style>
+
+<script>
+document
+  .querySelectorAll(
+    '.remark-slide-content' +
+    ':not(.title-slide)' +
+    // add additional classes to exclude here, e.g.
+    // ':not(.inverse)' +
+    ':not(.hide-logo)'
+  )
+  .forEach(el => {
+    el.innerHTML += '<div class="logo"></div>';
+  });
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
