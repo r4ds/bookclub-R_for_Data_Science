@@ -83,15 +83,15 @@ Chapter 7 Exploratory Data Analysis
 
 Chapter 8 Workflow: projects 
 
-- Luke Morris: [VIDEO]() | [SLIDES](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week06/Cohort1/Chapter8910Slides.html)
+- Luke Morris: [VIDEO](https://youtu.be/FVF_aDtsQ_U) | [SLIDES](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week06/Cohort1/Chapter8910Slides.html)
 
 Chapter 9 Introduction 
 
-- Luke Morris: [VIDEO]() | [SLIDES](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week06/Cohort1/Chapter8910Slides.html)
+- Luke Morris: [VIDEO](https://youtu.be/FVF_aDtsQ_U) | [SLIDES](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week06/Cohort1/Chapter8910Slides.html)
 
 Chapter 10 Tibbles 
 
-- Luke Morris: [VIDEO]() | [SLIDES](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week06/Cohort1/Chapter8910Slides.html)
+- Luke Morris: [VIDEO](https://youtu.be/FVF_aDtsQ_U) | [SLIDES](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week06/Cohort1/Chapter8910Slides.html)
 
 Chapter 11 Data import 
 
