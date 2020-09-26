@@ -95,7 +95,7 @@ Chapter 10 Tibbles
 
 Chapter 11 Data import 
 
-- 
+- Shamsuddeen Muhammad: [VIDEO](https://youtu.be/oz3GftZaLoU) | [SLIDES]()
 
 Chapter 12 Tidy data 
 
