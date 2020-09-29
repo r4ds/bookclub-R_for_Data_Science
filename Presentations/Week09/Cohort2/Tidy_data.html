@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>R for Data Science Book Club</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Havva Yalinca" />
+    <meta name="date" content="2020-09-28" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# R for Data Science Book Club
+## Chapter 12 - Tidy Data
+### Havva Yalinca
+### R4DS Online Learning Community
+### 2020-09-29
+
+---
+
+## What is tidy data?
+
+There are three interrelated rules which make a dataset tidy:
+
+ 1. Each variable must have its own column.
+ 1. Each observation must have its own row.
+ 1. Each value must have its own cell.
+ 
+&lt;img src="https://raw.githubusercontent.com/hadley/r4ds/master/images/tidy-1.png" width="100%" /&gt;
+
+---
+## Some untidy rectangular data examples (1)
+
+### More than one variable per column
+
+```r
+table3
+```
+
+```
+## # A tibble: 6 x 3
+##   country      year rate             
+## * &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;            
+## 1 Afghanistan  1999 745/19987071     
+## 2 Afghanistan  2000 2666/20595360    
+## 3 Brazil       1999 37737/172006362  
+## 4 Brazil       2000 80488/174504898  
+## 5 China        1999 212258/1272915272
+## 6 China        2000 213766/1280428583
+```
+
+---
+
+## Some untidy rectangular data examples (2)
+
+### Some values (Year) encoded in column names
+
+
+```r
+table4a
+```
+
+```
+## # A tibble: 3 x 3
+##   country     `1999` `2000`
+## * &lt;chr&gt;        &lt;int&gt;  &lt;int&gt;
+## 1 Afghanistan    745   2666
+## 2 Brazil       37737  80488
+## 3 China       212258 213766
+```
+
+---
+
+## Advantages of using tidy data
+
+&gt;  1. There’s a general advantage to picking **one consistent way of storing data**. If you have a consistent data structure, it’s easier to learn the tools that work with it because they have an underlying **uniformity**.
+
+ &gt; 2. There’s a specific advantage to placing variables in columns because it allows R’s vectorised nature to shine. As you learned in mutate and summary functions, most built-in R functions work with vectors of values. That makes transforming tidy data feel particularly natural.
+
+---
+### Exercises (12.2.1) Question 1
+
+Using prose, describe how the variables and observations are organised in
+    each of the sample tables.
+    
+* **table 1**: Each row shows the the number of cases and populations in each country by year. (each variable in a column, each observation in a row, each cell contains one value, therefore tidy data.)
+
+--
+    
+* **table 2**: Each pair of rows shows the same info as a single row in the able above. For each country and year, one row shows number of cases, and the following row shows the population that year. The variable shown is indicated in the `type` column.
+
+--
+    
+* **table 3**: Each row shows the country, year and infection rate represented in a character of form {cases}/{population}. While it is compact for display, the rate variable is not usable as a number in its current form.
+
+--
+
+* **table 4a** and **table 4b**: Each row shows the number of cases (4a) or population (4b) of the country specified for the years 1999 and 2000. The year variable is encoded as 2 columns.
+
+---
+
+### Exercises (12.2.1) Question 2  
+
+Compute the `rate` for `table2`, and `table4a` + `table4b`. 
+    You will need to perform four operations:
+
+  1.  Extract the number of TB cases per country per year.
+  1.  Extract the matching population per country per year.
+  1.  Divide cases by population, and multiply by 10000.
+  1.  Store back in the appropriate place.
+    
+    Which representation is easiest to work with? Which is hardest? Why?
+
+---
+
+#### Calculating rate using `table2` (without pivoting)
+
+
+```r
+tb2_cases &lt;- table2 %&gt;% filter(type == "cases") %&gt;%
+  select(-type)
+
+tb2_pop &lt;- table2 %&gt;% filter(type == "population") %&gt;%
+  select(-type)
+
+tb2_cases %&gt;% inner_join(tb2_pop, by=c('country', 'year'),
+                         suffix = c('_cases', '_pop')) %&gt;%
+  mutate(rate=count_cases / count_pop * 10000, type='rate') %&gt;%
+  select(country, year, type, count=rate) %&gt;% 
+  bind_rows(table2) %&gt;%
+  arrange(country, year, type)
+```
+
+```
+## # A tibble: 18 x 4
+##    country      year type         count
+##    &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;        &lt;dbl&gt;
+##  1 Afghanistan  1999 cases      7.45e+2
+##  2 Afghanistan  1999 population 2.00e+7
+*##  3 Afghanistan  1999 rate       3.73e-1
+##  4 Afghanistan  2000 cases      2.67e+3
+##  5 Afghanistan  2000 population 2.06e+7
+*##  6 Afghanistan  2000 rate       1.29e+0
+##  7 Brazil       1999 cases      3.77e+4
+##  8 Brazil       1999 population 1.72e+8
+*##  9 Brazil       1999 rate       2.19e+0
+## 10 Brazil       2000 cases      8.05e+4
+## 11 Brazil       2000 population 1.75e+8
+*## 12 Brazil       2000 rate       4.61e+0
+## 13 China        1999 cases      2.12e+5
+## 14 China        1999 population 1.27e+9
+*## 15 China        1999 rate       1.67e+0
+## 16 China        2000 cases      2.14e+5
+## 17 China        2000 population 1.28e+9
+## 18 China        2000 rate       1.67e+0
+```
+
+
+---
+
+#### Calculating rate using `table2` (using pivoting)
+    
+
+```r
+table2 %&gt;% pivot_wider(id_cols=c("country", "year"), 
+              names_from=type, values_from=count) %&gt;% 
+  mutate(rate=cases/population*10000) %&gt;%
+  pivot_longer(cols=c("cases":"rate"), 
+               names_to = "type", values_to = "count") %&gt;%
+  arrange(country, year, type)
+```
+
+```
+## # A tibble: 18 x 4
+##    country      year type         count
+##    &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;        &lt;dbl&gt;
+##  1 Afghanistan  1999 cases      7.45e+2
+##  2 Afghanistan  1999 population 2.00e+7
+*##  3 Afghanistan  1999 rate       3.73e-1
+##  4 Afghanistan  2000 cases      2.67e+3
+##  5 Afghanistan  2000 population 2.06e+7
+*##  6 Afghanistan  2000 rate       1.29e+0
+##  7 Brazil       1999 cases      3.77e+4
+##  8 Brazil       1999 population 1.72e+8
+*##  9 Brazil       1999 rate       2.19e+0
+## 10 Brazil       2000 cases      8.05e+4
+## 11 Brazil       2000 population 1.75e+8
+*## 12 Brazil       2000 rate       4.61e+0
+## 13 China        1999 cases      2.12e+5
+## 14 China        1999 population 1.27e+9
+*## 15 China        1999 rate       1.67e+0
+## 16 China        2000 cases      2.14e+5
+## 17 China        2000 population 1.28e+9
+## 18 China        2000 rate       1.67e+0
+```
+    
+---
+
+#### Calculating rate using `table4a` and `table4b`
+    
+
+```r
+tb4_cases &lt;- table4a %&gt;% 
+  pivot_longer(-country, names_to="year", values_to="cases")
+
+tb4_pop &lt;- table4b %&gt;% 
+  pivot_longer(-country, names_to="year", values_to="pop")
+
+tb4_cases %&gt;% 
+  inner_join(tb4_pop, by=c("country", "year")) %&gt;%
+  mutate(rate=cases/pop*10000) %&gt;%
+  pivot_wider(id_cols=country, names_from=year, values_from=rate)
+```
+
+```
+## # A tibble: 3 x 3
+##   country     `1999` `2000`
+##   &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt;
+## 1 Afghanistan  0.373   1.29
+## 2 Brazil       2.19    4.61
+## 3 China        1.67    1.67
+```
+
+
+---
+
+### Exercises (12.2.1) Question 3
+
+Recreate the plot showing change in cases over time using `table2` instead of `table1`. What do you need to do first?
+
+
+```r
+table2 %&gt;% 
+* filter(type == 'cases') %&gt;%
+  ggplot(aes(year, count)) +
+  geom_line(aes(group = country), colour = "grey50") + 
+  geom_point(aes(colour = country))
+```
+
+![](Tidy_data_files/figure-html/unnamed-chunk-6-1.png)&lt;!-- --&gt;
+
+---
+
+## Pivoting
+
+Most data is not in a tidy format: 
+* one variable might be spread across multiple columns, 
+* one observation might be scattered across multiple rows.
+
+In cases where column names are not names of variables but values of a variable, use `pivot_longer()`.
+
+&lt;img src="https://d33wubrfki0l68.cloudfront.net/3aea19108d39606bbe49981acda07696c0c7fcd8/2de65/images/tidy-9.png" width="100%" /&gt;
+
+Pivoted columns (`1999` and `2000`) are dropped, their names are placed in the new `year` column, and values in the new `count` column.
+
+---
+
+In cases where an observation is scattered across multiple rows, use `pivot_wider()`.
+
+&lt;img src="https://d33wubrfki0l68.cloudfront.net/8350f0dda414629b9d6c354f87acf5c5f722be43/bcb84/images/tidy-8.png" width="100%" /&gt;
+
+---
+
+### Exercises (12.3.3) Question 1
+
+Why are pivot_longer() and pivot_wider() not perfectly symmetrical?
+Carefully consider the following example:
+
+
+```r
+stocks &lt;- tibble(
+  year   = c(2015, 2015, 2016, 2016),
+  half  = c(   1,    2,     1,    2),
+  return = c(1.88, 0.59, 0.92, 0.17)
+)
+stocks %&gt;% 
+  pivot_wider(names_from = year, values_from = return) %&gt;% 
+  pivot_longer(`2015`:`2016`, names_to = "year", values_to = "return")
+```
+
+```
+## # A tibble: 4 x 3
+##    half year  return
+##   &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;
+## 1     1 2015    1.88
+## 2     1 2016    0.92
+## 3     2 2015    0.59
+## 4     2 2016    0.17
+```
+The `pivot_longer()` call turn column names into character by default. Can override this using the `names_ptype` argument.
+
+---
+
+### Exercises (12.3.3) Question 2
+
+Why does this code fail?
+ 
+
+```r
+#table4a %&gt;% 
+#  pivot_longer(c(1999, 2000), names_to = "year", 
+#               values_to = "cases")
+##&gt; Error: Can't subset columns that don't exist.
+##&gt; ✖ The locations 1999 and 2000 don't exist.
+##&gt; ℹ There are only 3 columns.
+```
+
+`1999` and `2000` are non-syntactic column names (they start with a number), so they need to be surrounded by backticks. Otherwise R tries to fetch 1999th and the 2000th columns, and fails to find them in a 3-column df.
+
+
+```r
+table4a %&gt;% 
+  pivot_longer(c(`1999`, `2000`), names_to = "year",
+               values_to = "cases")
+```
+
+```
+## # A tibble: 6 x 3
+##   country     year   cases
+##   &lt;chr&gt;       &lt;chr&gt;  &lt;int&gt;
+## 1 Afghanistan 1999     745
+## 2 Afghanistan 2000    2666
+## 3 Brazil      1999   37737
+## 4 Brazil      2000   80488
+## 5 China       1999  212258
+## 6 China       2000  213766
+```
+
+---
+
+### Exercises (12.3.3) Question 3
+
+
+What would happen if you widen this table? Why? How could you add a new column to uniquely identify each value?
+**Warning: Values are not uniquely identified; output will contain list-cols. Can add a row_number()  for each unique name-variable pair as id.**
+
+
+
+```r
+people &lt;- tribble(
+  ~name,             ~names,  ~values,
+  #-----------------|--------|------
+  "Phillip Woods",   "age",       45,
+  "Phillip Woods",   "height",   186,
+  "Phillip Woods",   "age",       50,
+  "Jessica Cordero", "age",       37,
+  "Jessica Cordero", "height",   156)
+people %&gt;% group_by(name, names) %&gt;%
+  mutate(id = row_number()) %&gt;%
+  ungroup() %&gt;%
+  pivot_wider(names_from="name", values_from = "values")
+```
+
+```
+## # A tibble: 3 x 4
+##   names     id `Phillip Woods` `Jessica Cordero`
+##   &lt;chr&gt;  &lt;int&gt;           &lt;dbl&gt;             &lt;dbl&gt;
+## 1 age        1              45                37
+## 2 height     1             186               156
+## 3 age        2              50                NA
+```
+
+---
+
+### Exercises (12.3.3) Question 4
+
+Tidy the simple tibble below. Do you need to make it wider or longer? What are the variables?
+
+
+```r
+preg &lt;- tribble(
+  ~pregnant, ~male, ~female,
+  "yes",     NA,    10,
+  "no",      20,    12
+)
+
+preg %&gt;% pivot_longer(c(male, female), 
+                      names_to = "sex", values_to = "count")
+```
+
+```
+## # A tibble: 4 x 3
+##   pregnant sex    count
+##   &lt;chr&gt;    &lt;chr&gt;  &lt;dbl&gt;
+## 1 yes      male      NA
+## 2 yes      female    10
+## 3 no       male      20
+## 4 no       female    12
+```
+
+---
+
+## Separate
+
+Separate splits a column at a given separator character. By default, it separates at any non-alphanumeric character, but a specific character can also be passed in the `sep` argument. Alternatively, a vector of integers can also be passed to separate a column at specific positions.
+
+By default, the column type is preserved, but this can be controlled using `convert = TRUE`. 
+
+&lt;img src="https://d33wubrfki0l68.cloudfront.net/f6fca537e77896868fedcd85d9d01031930d76c9/637d9/images/tidy-17.png" width="100%" /&gt;
+
+---
+
+##Unite
+
+Unite joins 2 columns into 1, using an optional separator between the values from different columns (default is `_`).
+
+&lt;img src="https://d33wubrfki0l68.cloudfront.net/3d98d3ba019fed3f9ee328284568d4508e479ef8/0b3e6/images/tidy-18.png" width="100%" /&gt;
+
+---
+
+### Exercises (12.4.3) Question 1
+
+What do the `extra` and `fill` arguments do in `separate()`? Experiment with the various options for the following two toy datasets.
+
+
+```r
+# tibble(x = c("a,b,c", "d,e,f,g", "h,i,j")) %&gt;% 
+#   separate(x, c("one", "two", "three"))
+## Expected 3 pieces. Additional pieces 
+## discarded in 1 rows [2].
+
+#tibble(x = c("a,b,c", "d,e", "f,g,i")) %&gt;% 
+#  separate(x, c("one", "two", "three"))
+## Expected 3 pieces. Missing pieces filled 
+## with `NA` in 1 rows [2].
+```
+
+The `extra` and `fill` arguments deal with cases where the column can be separated into more or fewer new columns than expected, based on the new column names. Default for both is 'warn'. Extra can take 'warn', 'drop', 'merge'; fill can take 'warn', 'left', 'right'.
+
+---
+
+### Exercises (12.4.3) Question 2
+
+Both `unite()` and `separate()` have a `remove` argument. What does it do? Why would you set it to FALSE?
+
+The `remove` argument removes the original column(s) used for uniting or separating. It makes sense to set it to FALSE since the information will be stored in other column(s) after this step, and the original data will not be used any more.
+
+---
+class: inverse
+
+### Exercises (12.4.3) Question 3
+
+Compare and contrast `separate()` and `extract()`. Why are there three variations of separation (by position, by separator, and with groups), but only one unite?
+
+
+---
+
+## Missing values
+
+Explicit (shown as `NA`) vs implicit (missing without any `NA` in its place) missing values
+
+
+```r
+stocks &lt;- tibble(
+  year   = c(2015, 2015, 2015, 2015, 2016, 2016, 2016),
+  qtr    = c(   1,    2,    3,    4,    2,    3,    4),
+  return = c(1.88, 0.59, 0.35,   NA, 0.92, 0.17, 2.66)
+)
+```
+
+Pivoting this wider reveals the implicit missing value (controlled by the `values_drop_na` arguments).
+
+
+```r
+stocks %&gt;% pivot_wider(names_from = year, values_from = return)
+```
+
+```
+## # A tibble: 4 x 3
+##     qtr `2015` `2016`
+##   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+## 1     1   1.88  NA   
+## 2     2   0.59   0.92
+## 3     3   0.35   0.17
+## 4     4  NA      2.66
+```
+
+---
+
+## Complete
+
+Complete takes in column(s) and completes the df for all the potential combinations of the values in them.
+
+
+```r
+stocks %&gt;% complete(year, qtr)
+```
+
+```
+## # A tibble: 8 x 3
+##    year   qtr return
+##   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+## 1  2015     1   1.88
+## 2  2015     2   0.59
+## 3  2015     3   0.35
+## 4  2015     4  NA   
+## 5  2016     1  NA   
+## 6  2016     2   0.92
+## 7  2016     3   0.17
+## 8  2016     4   2.66
+```
+
+---
+
+## Fill
+
+Fill can be used to fill in the gaps with the preceding or following value - a common practice in data entry.
+
+
+```r
+treatment &lt;- tribble(
+  ~ person,           ~ treatment, ~response,
+  "Derrick Whitmore", 1,           7,
+  NA,                 2,           10,
+  NA,                 3,           9,
+  "Katherine Burke",  1,           4
+)
+
+treatment %&gt;% fill(person)
+```
+
+```
+## # A tibble: 4 x 3
+##   person           treatment response
+##   &lt;chr&gt;                &lt;dbl&gt;    &lt;dbl&gt;
+## 1 Derrick Whitmore         1        7
+## 2 Derrick Whitmore         2       10
+## 3 Derrick Whitmore         3        9
+## 4 Katherine Burke          1        4
+```
+
+---
+class: inverse
+
+### Exercises (12.5.1) Question 1
+
+Compare and contrast the fill arguments to pivot_wider() and complete().
+
+---
+
+### Exercises (12.5.1) Question 2
+
+What does the direction argument to fill() do?
+
+It determines the direction of filling missing values. Available options are: `down` (default) to replace with previous non-NA value, `up` to replace with the following non-NA value, `downup` (i.e. first down and then up) or `updown` (first up and then down).
+
+---
+
+## Case Study 
+
+&gt; The tidyr::who dataset contains tuberculosis (TB) cases broken down by year, country, age, gender, and diagnosis method. The data comes from the 2014 World Health Organization Global Tuberculosis Report, available at http://www.who.int/tb/country/data/download/en/.
+
+
+```r
+who %&gt;%
+  pivot_longer(
+    cols = new_sp_m014:newrel_f65, 
+    names_to = "key", 
+    values_to = "cases", 
+    values_drop_na = TRUE
+  ) %&gt;% 
+  mutate(
+    key = stringr::str_replace(key, "newrel", "new_rel")
+  ) %&gt;%
+  separate(key, c("new", "var", "sexage")) %&gt;% 
+  select(-new, -iso2, -iso3) %&gt;% 
+  separate(sexage, c("sex", "age"), sep = 1)
+```
+
+```
+## # A tibble: 76,046 x 6
+##    country      year var   sex   age   cases
+##    &lt;chr&gt;       &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt;
+##  1 Afghanistan  1997 sp    m     014       0
+##  2 Afghanistan  1997 sp    m     1524     10
+##  3 Afghanistan  1997 sp    m     2534      6
+##  4 Afghanistan  1997 sp    m     3544      3
+##  5 Afghanistan  1997 sp    m     4554      5
+##  6 Afghanistan  1997 sp    m     5564      2
+##  7 Afghanistan  1997 sp    m     65        0
+##  8 Afghanistan  1997 sp    f     014       5
+##  9 Afghanistan  1997 sp    f     1524     38
+## 10 Afghanistan  1997 sp    f     2534     36
+## # ... with 76,036 more rows
+```
+
+---
+class: inverse
+
+### Exercises (12.6.1) Question 1
+
+In this case study I set values_drop_na = TRUE just to make it easier to check that we had the correct values. Is this reasonable? Think about how missing values are represented in this dataset. Are there implicit missing values? What’s the difference between an NA and zero?
+
+---
+class: inverse
+
+### Exercises (12.6.1) Question 2
+
+What happens if you neglect the mutate() step? (mutate(names_from = stringr::str_replace(key, "newrel", "new_rel")))
+
+---
+
+### Exercises (12.6.1) Question 3
+
+I claimed that iso2 and iso3 were redundant with country. Confirm this claim.
+
+
+```r
+nrow(distinct(who, country, iso2, iso3))
+```
+
+```
+## [1] 219
+```
+
+```r
+nrow(distinct(who, country))
+```
+
+```
+## [1] 219
+```
+
+---
+
+### Exercises (12.6.1) Question 4
+
+For each country, year, and sex compute the total number of cases of TB. Make an informative visualisation of the data.
+
+
+```r
+mydata &lt;- who %&gt;%
+  pivot_longer(
+    cols = new_sp_m014:newrel_f65, 
+    names_to = "key", 
+    values_to = "cases", 
+    values_drop_na = TRUE
+  ) %&gt;% 
+  mutate(
+    key = stringr::str_replace(key, "newrel", "new_rel")
+  ) %&gt;%
+  separate(key, c("new", "var", "sexage")) %&gt;% 
+  select(-new, -iso2, -iso3) %&gt;% 
+  separate(sexage, c("sex", "age"), sep = 1) %&gt;%
+  count(year, country, sex, wt=cases, sort=T)
+
+num &lt;- 10
+top_n &lt;- mydata %&gt;% 
+  group_by(country) %&gt;% 
+  summarise(mean_cases = mean(n)) %&gt;% 
+  arrange(desc(mean_cases)) %&gt;% 
+  head(num)
+```
+
+```
+## `summarise()` ungrouping output (override with `.groups` argument)
+```
+
+---
+
+
+```r
+# Plotting
+top_n %&gt;% inner_join(mydata, by='country') %&gt;%
+  ggplot(aes(x=year, y=n, colour=country)) +
+  geom_line() +
+  labs(title='Number of TB cases over time in top 10 countries',
+       subtitle='separated by sex') +
+  xlab(NULL) + ylab('Number of cases') +
+  facet_wrap(~sex)
+```
+
+![](Tidy_data_files/figure-html/unnamed-chunk-20-1.png)&lt;!-- --&gt;
+
+---
+
+## Non-tidy data
+
+&gt; There are two main reasons to use other data structures:
+
+&gt; * Alternative representations may have substantial performance or space advantages.
+
+&gt; * Specialised fields have evolved their own conventions for storing data that may be quite different to the conventions of tidy data.
+
+&gt; Either of these reasons means you’ll need something other than a tibble (or data frame). If your data does fit naturally into a rectangular structure composed of observations and variables, I think tidy data should be your default choice. But there are good reasons to use other structures; tidy data is not the only way.
+
+&gt; If you’d like to learn more about non-tidy data, I’d highly recommend this thoughtful blog post by Jeff Leek: http://simplystatistics.org/2016/02/17/non-tidy-data/
+---
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
