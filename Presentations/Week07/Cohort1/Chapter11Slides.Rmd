@@ -1,0 +1,225 @@
+---
+title: "R for Data Science"
+subtitle: "Chapter 11: Data Import"
+author: "Luke Morris"
+institute: "@LukeMorris"
+date: " `r Sys.Date()` "
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["xaringan-themer.css","custom.css"]
+    includes:
+      after_body: insert-logo.html
+---
+
+
+```{r xaringan-themer, include = FALSE}
+library(tidyverse)
+library(xaringanthemer)
+style_mono_light(
+  base_color = "#3092FF",
+  header_font_google = google_font("Josefin Sans"),
+  text_font_google   = google_font("Montserrat", "300", "300i"),
+  code_font_google   = google_font("Droid Mono"),
+)
+```
+
+## Importing your own data
+
+- The tidyverse comes with handy tools to get your own data into R.
+
+- The most common function is `read_csv()`, the focus of this chapter.
+
+- There's also... 
+  - `read_csv2()` if you're ever dealing with numbers written in non-U.S. style
+    (thousands and millions split up by periods, semicolon as delimiter)
+  
+  - `read_tsv()` if your columns are split up by tabs instead of columns
+  
+  - `read_delim()`, which lets you set your own delimiter to split columns
+  
+---
+
+## Let's pull some data in!
+
+```{r}
+trucks <- read_csv("trucks.csv")
+
+trucks
+```
+
+---
+
+## A little extra help
+
+If your file doesn't get straight to the point, there are ways to point R to the 
+beginning of the relevant data: `skip =` and `comment =`
+
+```{r}
+read_csv("The first line of metadata
+  The second line of metadata
+  x,y,z
+  1,2,3", skip = 2)
+
+read_csv("# A comment I want to skip
+  x,y,z
+  1,2,3", comment = "#")
+```
+
+---
+
+## A little extra help
+
+No column names? No problem! You can tell R they don't exist, or provide your own
+
+```{r}
+read_csv("1,2,3\n4,5,6", col_names = FALSE)
+
+read_csv("1,2,3\n4,5,6", col_names = c("x", "y", "z"))
+```
+
+(FYI: that "\n" you see is a shortcut that tells R to create a new line)
+
+---
+
+## A little extra help
+
+Adding `na = ` to the `read_csv()` command lets you tell R what values should
+be interpreted as NAs
+
+```{r}
+read_csv("a,b,c\n1,2,.", na = ".")
+```
+
+Declaring `quote =` lets you guide R through what it should be reading as
+quotation marks (in the case the data doesn't use the typical "")
+
+```{r}
+read_delim("x,y\n1,'a,b'", ",", quote = "'")
+```
+
+---
+
+## Parsing vectors
+
+The secret sauce behind the `readr` package's ability to read your data is in
+its usage of `parse_*()` functions.
+
+```{r}
+str(parse_logical(c("TRUE", "FALSE", "NA")))
+str(parse_integer(c("1", "2", "3")))
+str(parse_date(c("2010-01-01", "1979-10-14")))
+parse_integer(c("1", "231", ".", "456"), na = ".")
+```
+
+---
+
+## When parsing goes wrong
+
+Parsing failures result in a warning in the console ...
+
+```{r}
+x <- parse_integer(c("123", "345", "abc", "123.45"))
+```
+
+
+... and missing data in the output.
+
+```{r}
+x
+```
+
+Use `problems()` to get a look at all the errors
+
+---
+
+## So. Many. Parsers.
+
+Here's a look at what parsers are available in `readr`
+
+`parse_logical()`
+
+`parse_integer()`
+
+`parse_double()`
+
+`parse_number()`
+
+`parse_character()`
+
+`parse_factor()`
+
+`parse_datetime()`
+
+`parse_date()`
+
+`parse_time()`
+
+Not sure which one you need? Look back at this part of the chapter to decide.
+
+---
+
+## How `readr` works
+
+- It guesses which type of data is in your column based on what it sees in the
+first 1000 entries.
+
+- If that first set of entries isn't typical of the column as a whole, it may
+guess incorrectly (e.g. If there's nothing but `NA`s in the first 1000 entries,
+it'll guess logical)
+
+- Again, you can use `problems()` to get a look at all the errors.
+
+- Best plan of action is to solve issues column by column.
+
+- Once you figure out what type of data the column should be read in as, you
+can tell R to read it in that way using the `col_*()` arguments
+
+```{r eval=FALSE, include=TRUE}
+challenge <- read_csv(
+  readr_example("challenge.csv"), 
+  col_types = cols(
+    x = col_double(),
+    y = col_logical()
+  )
+)
+```
+
+---
+
+## Other ways to troubleshoot
+
+- Increase the number of observations `readr` uses to guess the column type
+
+```{r eval=FALSE, include=TRUE}
+challenge2 <- read_csv(readr_example("challenge.csv"), guess_max = 1001)
+```
+
+--
+
+- Nuclear option: Read all the columns in as characters
+
+```{r eval=FALSE, include=TRUE}
+challenge2 <- read_csv(readr_example("challenge.csv"), 
+  col_types = cols(.default = col_character())
+)
+```
+
+"This is particularly useful in conjunction with `type_convert()`, which applies the parsing heuristics to the character columns in a data frame."
+
+---
+
+## Writing to a file
+
+Need to get your newly manipulated data out of R? That's where `write_csv()`
+and `write_tsv()` come in.
+
+```{r eval=FALSE, include=TRUE}
+write_csv(trucks, "trucks.csv")
+```
+
+The first argument tells R **which** dataframe we're writing to file. The second
+tells it **where** we will write that file.
+
+Planning to use that fresh new csv in Excel? `write_excel_csv()` can make it
+play nice with Excel. Also consider checking out the `readxl` package.
