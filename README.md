@@ -1,16 +1,20 @@
-# R4DS [R For Data Science](https://r4ds.had.co.nz/) Book Club
+# R4DS R For Data Science Book Club
 
-A weekly reading group following the chapters of R for Data Science by Garrett Grolemund & Hadley Wickham
+A weekly reading group following the chapters of [R for Data Science by Garrett Grolemund & Hadley Wickham](https://r4ds.had.co.nz/)
 
 Visit the [#book_club-r_for_data_science channel](https://r4ds.io/join) on Slack to join the video chat! 
 
 This repo contains 3 main folders:
 
-- QandA: A collection of questions (and answers) on the chapters that come up during meetings (or between!)
-
 - Presentations: each week a presenter will give a talk summarizing the chapter and/or discussing practical applications of the topic at hand. 
 
-- Data: Example datasets about [? (pick something fun!)] are stored in this folder to help facilitate practical applications!
+- QandA: A collection of questions (and answers) on the chapters that come up during meetings (or between!)
+
+- Data: Example datasets are stored in this folder to help facilitate practical applications!
+
+
+#### Some helpful links: 
+- GitHub navigation: [GitHub Web Editor](https://youtu.be/d41oc2OMAuI) | [GitHub Local Setup](https://www.youtube.com/watch?v=hNUNPkoledI)
 
 ### Meeting Schedule 
 
@@ -64,39 +68,41 @@ Chapter 3 Data visualisation
 Chapter 4 Workflow: basics 
 
 - Erick Knackstedt: [VIDEO](https://youtu.be/utmMd8QEq7Y) | [SLIDES](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week03/Cohort1/Chapter4Slides.html) 
-- Neha Moopen: [VIDEO](https://youtu.be/uFseYWMo5jg) | [SLIDES]()
+- Neha Moopen: [VIDEO](https://youtu.be/uFseYWMo5jg) | SLIDES
 
 Chapter 5 Data transformation 
 
-- Silvia Canelón: [VIDEO](https://youtu.be/p-h758aKWQY) | [SLIDES](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week04/Cohort1/Chapter5Slides.html)
-- Neha Moopen: [VIDEO Pt.1](https://youtu.be/uFseYWMo5jg), [VIDEO Pt.2](https://youtu.be/VXzFEZ3LMJU)| [SLIDES]()
+- Silvia Canelón: [VIDEO (merged with ch4)](https://youtu.be/p-h758aKWQY) | [SLIDES](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week04/Cohort1/Chapter5Slides.html)
+- Neha Moopen: [VIDEO Pt.1 (merged with ch4)](https://youtu.be/uFseYWMo5jg), [VIDEO Pt.2](https://youtu.be/VXzFEZ3LMJU)| SLIDES
 
 Chapter 6 Workflow: scripts
 
-- Pavitra Chakravarty: [VIDEO](https://www.youtube.com/watch?v=mlIgAWOLVuQ&feature=youtu.be) | [SLIDES](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week05/Cohort1/Chapter6Slides.html)
-- Shamsuddeen Muhammad: [VIDEO](https://youtu.be/SfAiSNKdAXA) | [SLIDES]()
+- Pavitra Chakravarty: [VIDEO](https://www.youtube.com/watch?v=mlIgAWOLVuQ) | [SLIDES](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week05/Cohort1/Chapter6Slides.html)
+- Shamsuddeen Muhammad: [VIDEO](https://youtu.be/SfAiSNKdAXA) | SLIDES
 
 Chapter 7 Exploratory Data Analysis 
 
-- Pavitra Chakravarty: [VIDEO](https://www.youtube.com/watch?v=mlIgAWOLVuQ&feature=youtu.be) | [SLIDES](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week05/Cohort1/Chapter6Slides.html)
-- Shamsuddeen Muhammad: [VIDEO](https://youtu.be/SfAiSNKdAXA) | [SLIDES]()
+- Pavitra Chakravarty: [VIDEO (merged with ch6)](https://www.youtube.com/watch?v=mlIgAWOLVuQ) | [SLIDES](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week05/Cohort1/Chapter6Slides.html)
+- Shamsuddeen Muhammad: [VIDEO (merged with ch6)](https://youtu.be/SfAiSNKdAXA) | SLIDES
 
 Chapter 8 Workflow: projects 
 
 - Luke Morris: [VIDEO](https://youtu.be/FVF_aDtsQ_U) | [SLIDES](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week06/Cohort1/Chapter8910Slides.html)
+- Kamran Khan: [VIDEO](https://youtu.be/5QKJpziLKOM) | SLIDES
 
 Chapter 9 Introduction 
 
-- Luke Morris: [VIDEO](https://youtu.be/FVF_aDtsQ_U) | [SLIDES](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week06/Cohort1/Chapter8910Slides.html)
+- Luke Morris: [VIDEO (merged with ch8)](https://youtu.be/FVF_aDtsQ_U) | [SLIDES](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week06/Cohort1/Chapter8910Slides.html)
 
 Chapter 10 Tibbles 
 
-- Luke Morris: [VIDEO](https://youtu.be/FVF_aDtsQ_U) | [SLIDES](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week06/Cohort1/Chapter8910Slides.html)
+- Luke Morris: [VIDEO (merged with ch8/9)](https://youtu.be/FVF_aDtsQ_U) | [SLIDES](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week06/Cohort1/Chapter8910Slides.html)
+- Kamran Khan: [VIDEO (merged with ch8/9)](https://youtu.be/5QKJpziLKOM) | SLIDES
 
 Chapter 11 Data import 
 
-- Luke Morris [VIDEO](https://www.youtube.com/watch?v=6QIDXUJbB1o) | [SLIDES](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week07/Cohort1/Chapter11Slides.html)
-- Shamsuddeen Muhammad: [VIDEO](https://youtu.be/oz3GftZaLoU) | [SLIDES]()
+- Shamsuddeen Muhammad: [VIDEO](https://youtu.be/oz3GftZaLoU) | SLIDES
+- Luke Morris: [VIDEO](https://youtu.be/FVF_aDtsQ_U) | [SLIDES](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week06/Cohort1/Chapter8910Slides.html)
 
 Chapter 12 Tidy data 
 
