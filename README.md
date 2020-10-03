@@ -16,16 +16,16 @@ This repo contains 3 main folders:
 
 *Cohort 1 [Americas] - (started 2020-07-31) - Fridays, 8pm E(D)T*
 
-- 2020-09-18 - Chapter 11 - Data Import
-- 2020-09-25 - Chapter 12 - Tidy Data
-- 2020-10-02 - Chapter 13 - Relational Data
+- 2020-10-09 - Chapter 12 - Tidy Data
+- 2020-10-16 - Chapter 13 - Relational Data
+- 2020-10-23 - Chapter 14 - Strings
 
 <details>
   <summary> Future Meetings </summary>
 
-- 2020-10-09 - Chapter 14 - Strings
-- 2020-10-17 - Chapter 15 - Factors
-- 2020-10-24 - Chapter 16 - Dates and Times
+- 2020-10-30 - Chapter 15 - Factors
+- 2020-11-05 - Chapter 16 - Dates and Times
+- 2020-11-12 - Wrangle Review and/or Program Intro
 
 </details>
 <hr>
@@ -95,7 +95,8 @@ Chapter 10 Tibbles
 
 Chapter 11 Data import 
 
-- 
+- Luke Morris [VIDEO](https://www.youtube.com/watch?v=6QIDXUJbB1o) | [SLIDES](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week07/Cohort1/Chapter11Slides.html)
+- Shamsuddeen Muhammad: [VIDEO](https://youtu.be/oz3GftZaLoU) | [SLIDES]()
 
 Chapter 12 Tidy data 
 
