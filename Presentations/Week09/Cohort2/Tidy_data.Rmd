@@ -1,0 +1,484 @@
+---
+title: "R for Data Science Book Club"
+subtitle: "Chapter 12 - Tidy Data"
+author: "Havva Yalinca"
+institute: "R4DS Online Learning Community"
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+## What is tidy data?
+
+There are three interrelated rules which make a dataset tidy:
+
+ 1. Each variable must have its own column.
+ 1. Each observation must have its own row.
+ 1. Each value must have its own cell.
+ 
+```{r tidy-structure, echo = FALSE, out.width = "100%"}
+library(tidyverse)
+knitr::include_graphics("https://raw.githubusercontent.com/hadley/r4ds/master/images/tidy-1.png")
+```
+
+---
+## Some untidy rectangular data examples (1)
+
+### More than one variable per column
+```{r}
+table3
+```
+
+---
+
+## Some untidy rectangular data examples (2)
+
+### Some values (Year) encoded in column names
+
+```{r}
+table4a
+```
+
+---
+
+## Advantages of using tidy data
+
+>  1. There’s a general advantage to picking **one consistent way of storing data**. If you have a consistent data structure, it’s easier to learn the tools that work with it because they have an underlying **uniformity**.
+
+ > 2. There’s a specific advantage to placing variables in columns because it allows R’s vectorised nature to shine. As you learned in mutate and summary functions, most built-in R functions work with vectors of values. That makes transforming tidy data feel particularly natural.
+
+---
+### Exercises (12.2.1) Question 1
+
+Using prose, describe how the variables and observations are organised in
+    each of the sample tables.
+    
+* **table 1**: Each row shows the the number of cases and populations in each country by year. (each variable in a column, each observation in a row, each cell contains one value, therefore tidy data.)
+
+--
+    
+* **table 2**: Each pair of rows shows the same info as a single row in the able above. For each country and year, one row shows number of cases, and the following row shows the population that year. The variable shown is indicated in the `type` column.
+
+--
+    
+* **table 3**: Each row shows the country, year and infection rate represented in a character of form {cases}/{population}. While it is compact for display, the rate variable is not usable as a number in its current form.
+
+--
+
+* **table 4a** and **table 4b**: Each row shows the number of cases (4a) or population (4b) of the country specified for the years 1999 and 2000. The year variable is encoded as 2 columns.
+
+---
+
+### Exercises (12.2.1) Question 2  
+
+Compute the `rate` for `table2`, and `table4a` + `table4b`. 
+    You will need to perform four operations:
+
+  1.  Extract the number of TB cases per country per year.
+  1.  Extract the matching population per country per year.
+  1.  Divide cases by population, and multiply by 10000.
+  1.  Store back in the appropriate place.
+    
+    Which representation is easiest to work with? Which is hardest? Why?
+
+---
+
+#### Calculating rate using `table2` (without pivoting)
+
+```{r highlight.output = c(6, 9, 12, 15, 18)}
+tb2_cases <- table2 %>% filter(type == "cases") %>%
+  select(-type)
+
+tb2_pop <- table2 %>% filter(type == "population") %>%
+  select(-type)
+
+tb2_cases %>% inner_join(tb2_pop, by=c('country', 'year'),
+                         suffix = c('_cases', '_pop')) %>%
+  mutate(rate=count_cases / count_pop * 10000, type='rate') %>%
+  select(country, year, type, count=rate) %>% 
+  bind_rows(table2) %>%
+  arrange(country, year, type)
+```
+
+
+---
+
+#### Calculating rate using `table2` (using pivoting)
+    
+```{r, highlight.output = c(6, 9, 12, 15, 18)}
+table2 %>% pivot_wider(id_cols=c("country", "year"), 
+              names_from=type, values_from=count) %>% 
+  mutate(rate=cases/population*10000) %>%
+  pivot_longer(cols=c("cases":"rate"), 
+               names_to = "type", values_to = "count") %>%
+  arrange(country, year, type)
+```
+    
+---
+
+#### Calculating rate using `table4a` and `table4b`
+    
+```{r}
+tb4_cases <- table4a %>% 
+  pivot_longer(-country, names_to="year", values_to="cases")
+
+tb4_pop <- table4b %>% 
+  pivot_longer(-country, names_to="year", values_to="pop")
+
+tb4_cases %>% 
+  inner_join(tb4_pop, by=c("country", "year")) %>%
+  mutate(rate=cases/pop*10000) %>%
+  pivot_wider(id_cols=country, names_from=year, values_from=rate)
+```
+
+
+---
+
+### Exercises (12.2.1) Question 3
+
+Recreate the plot showing change in cases over time using `table2` instead of `table1`. What do you need to do first?
+
+```{r, fig.height=4}
+table2 %>% 
+  filter(type == 'cases') %>%  #<<
+  ggplot(aes(year, count)) +
+  geom_line(aes(group = country), colour = "grey50") + 
+  geom_point(aes(colour = country))
+```
+
+---
+
+## Pivoting
+
+Most data is not in a tidy format: 
+* one variable might be spread across multiple columns, 
+* one observation might be scattered across multiple rows.
+
+In cases where column names are not names of variables but values of a variable, use `pivot_longer()`.
+
+```{r pivot-longer, echo = FALSE, out.width = "100%"}
+knitr::include_graphics("https://d33wubrfki0l68.cloudfront.net/3aea19108d39606bbe49981acda07696c0c7fcd8/2de65/images/tidy-9.png")
+```
+
+Pivoted columns (`1999` and `2000`) are dropped, their names are placed in the new `year` column, and values in the new `count` column.
+
+---
+
+In cases where an observation is scattered across multiple rows, use `pivot_wider()`.
+
+```{r pivot-wider, echo = FALSE, out.width = "100%"}
+knitr::include_graphics("https://d33wubrfki0l68.cloudfront.net/8350f0dda414629b9d6c354f87acf5c5f722be43/bcb84/images/tidy-8.png")
+```
+
+---
+
+### Exercises (12.3.3) Question 1
+
+Why are pivot_longer() and pivot_wider() not perfectly symmetrical?
+Carefully consider the following example:
+
+```{r}
+stocks <- tibble(
+  year   = c(2015, 2015, 2016, 2016),
+  half  = c(   1,    2,     1,    2),
+  return = c(1.88, 0.59, 0.92, 0.17)
+)
+stocks %>% 
+  pivot_wider(names_from = year, values_from = return) %>% 
+  pivot_longer(`2015`:`2016`, names_to = "year", values_to = "return")
+```
+The `pivot_longer()` call turn column names into character by default. Can override this using the `names_ptype` argument.
+
+---
+
+### Exercises (12.3.3) Question 2
+
+Why does this code fail?
+ 
+```{r}
+#table4a %>% 
+#  pivot_longer(c(1999, 2000), names_to = "year", 
+#               values_to = "cases")
+##> Error: Can't subset columns that don't exist.
+##> ✖ The locations 1999 and 2000 don't exist.
+##> ℹ There are only 3 columns.
+```
+
+`1999` and `2000` are non-syntactic column names (they start with a number), so they need to be surrounded by backticks. Otherwise R tries to fetch 1999th and the 2000th columns, and fails to find them in a 3-column df.
+
+```{r}
+table4a %>% 
+  pivot_longer(c(`1999`, `2000`), names_to = "year",
+               values_to = "cases")
+```
+
+---
+
+### Exercises (12.3.3) Question 3
+
+
+What would happen if you widen this table? Why? How could you add a new column to uniquely identify each value?
+**Warning: Values are not uniquely identified; output will contain list-cols. Can add a row_number()  for each unique name-variable pair as id.**
+
+
+```{r}
+people <- tribble(
+  ~name,             ~names,  ~values,
+  #-----------------|--------|------
+  "Phillip Woods",   "age",       45,
+  "Phillip Woods",   "height",   186,
+  "Phillip Woods",   "age",       50,
+  "Jessica Cordero", "age",       37,
+  "Jessica Cordero", "height",   156)
+people %>% group_by(name, names) %>%
+  mutate(id = row_number()) %>%
+  ungroup() %>%
+  pivot_wider(names_from="name", values_from = "values")
+```
+
+---
+
+### Exercises (12.3.3) Question 4
+
+Tidy the simple tibble below. Do you need to make it wider or longer? What are the variables?
+
+```{r}
+preg <- tribble(
+  ~pregnant, ~male, ~female,
+  "yes",     NA,    10,
+  "no",      20,    12
+)
+
+preg %>% pivot_longer(c(male, female), 
+                      names_to = "sex", values_to = "count")
+```
+
+---
+
+## Separate
+
+Separate splits a column at a given separator character. By default, it separates at any non-alphanumeric character, but a specific character can also be passed in the `sep` argument. Alternatively, a vector of integers can also be passed to separate a column at specific positions.
+
+By default, the column type is preserved, but this can be controlled using `convert = TRUE`. 
+
+```{r separate, echo = FALSE, out.width = "100%"}
+knitr::include_graphics("https://d33wubrfki0l68.cloudfront.net/f6fca537e77896868fedcd85d9d01031930d76c9/637d9/images/tidy-17.png")
+```
+
+---
+
+##Unite
+
+Unite joins 2 columns into 1, using an optional separator between the values from different columns (default is `_`).
+
+```{r unite, echo = FALSE, out.width = "100%"}
+knitr::include_graphics("https://d33wubrfki0l68.cloudfront.net/3d98d3ba019fed3f9ee328284568d4508e479ef8/0b3e6/images/tidy-18.png")
+```
+
+---
+
+### Exercises (12.4.3) Question 1
+
+What do the `extra` and `fill` arguments do in `separate()`? Experiment with the various options for the following two toy datasets.
+
+```{r}
+# tibble(x = c("a,b,c", "d,e,f,g", "h,i,j")) %>% 
+#   separate(x, c("one", "two", "three"))
+## Expected 3 pieces. Additional pieces 
+## discarded in 1 rows [2].
+
+#tibble(x = c("a,b,c", "d,e", "f,g,i")) %>% 
+#  separate(x, c("one", "two", "three"))
+## Expected 3 pieces. Missing pieces filled 
+## with `NA` in 1 rows [2].
+```
+
+The `extra` and `fill` arguments deal with cases where the column can be separated into more or fewer new columns than expected, based on the new column names. Default for both is 'warn'. Extra can take 'warn', 'drop', 'merge'; fill can take 'warn', 'left', 'right'.
+
+---
+
+### Exercises (12.4.3) Question 2
+
+Both `unite()` and `separate()` have a `remove` argument. What does it do? Why would you set it to FALSE?
+
+The `remove` argument removes the original column(s) used for uniting or separating. It makes sense to set it to FALSE since the information will be stored in other column(s) after this step, and the original data will not be used any more.
+
+---
+class: inverse
+
+### Exercises (12.4.3) Question 3
+
+Compare and contrast `separate()` and `extract()`. Why are there three variations of separation (by position, by separator, and with groups), but only one unite?
+
+
+---
+
+## Missing values
+
+Explicit (shown as `NA`) vs implicit (missing without any `NA` in its place) missing values
+
+```{r}
+stocks <- tibble(
+  year   = c(2015, 2015, 2015, 2015, 2016, 2016, 2016),
+  qtr    = c(   1,    2,    3,    4,    2,    3,    4),
+  return = c(1.88, 0.59, 0.35,   NA, 0.92, 0.17, 2.66)
+)
+```
+
+Pivoting this wider reveals the implicit missing value (controlled by the `values_drop_na` arguments).
+
+```{r}
+stocks %>% pivot_wider(names_from = year, values_from = return)
+```
+
+---
+
+## Complete
+
+Complete takes in column(s) and completes the df for all the potential combinations of the values in them.
+
+```{r}
+stocks %>% complete(year, qtr)
+```
+
+---
+
+## Fill
+
+Fill can be used to fill in the gaps with the preceding or following value - a common practice in data entry.
+
+```{r}
+treatment <- tribble(
+  ~ person,           ~ treatment, ~response,
+  "Derrick Whitmore", 1,           7,
+  NA,                 2,           10,
+  NA,                 3,           9,
+  "Katherine Burke",  1,           4
+)
+
+treatment %>% fill(person)
+```
+
+---
+class: inverse
+
+### Exercises (12.5.1) Question 1
+
+Compare and contrast the fill arguments to pivot_wider() and complete().
+
+---
+
+### Exercises (12.5.1) Question 2
+
+What does the direction argument to fill() do?
+
+It determines the direction of filling missing values. Available options are: `down` (default) to replace with previous non-NA value, `up` to replace with the following non-NA value, `downup` (i.e. first down and then up) or `updown` (first up and then down).
+
+---
+
+## Case Study 
+
+> The tidyr::who dataset contains tuberculosis (TB) cases broken down by year, country, age, gender, and diagnosis method. The data comes from the 2014 World Health Organization Global Tuberculosis Report, available at http://www.who.int/tb/country/data/download/en/.
+
+```{r}
+who %>%
+  pivot_longer(
+    cols = new_sp_m014:newrel_f65, 
+    names_to = "key", 
+    values_to = "cases", 
+    values_drop_na = TRUE
+  ) %>% 
+  mutate(
+    key = stringr::str_replace(key, "newrel", "new_rel")
+  ) %>%
+  separate(key, c("new", "var", "sexage")) %>% 
+  select(-new, -iso2, -iso3) %>% 
+  separate(sexage, c("sex", "age"), sep = 1)
+```
+
+---
+class: inverse
+
+### Exercises (12.6.1) Question 1
+
+In this case study I set values_drop_na = TRUE just to make it easier to check that we had the correct values. Is this reasonable? Think about how missing values are represented in this dataset. Are there implicit missing values? What’s the difference between an NA and zero?
+
+---
+class: inverse
+
+### Exercises (12.6.1) Question 2
+
+What happens if you neglect the mutate() step? (mutate(names_from = stringr::str_replace(key, "newrel", "new_rel")))
+
+---
+
+### Exercises (12.6.1) Question 3
+
+I claimed that iso2 and iso3 were redundant with country. Confirm this claim.
+
+```{r}
+nrow(distinct(who, country, iso2, iso3))
+nrow(distinct(who, country))
+```
+
+---
+
+### Exercises (12.6.1) Question 4
+
+For each country, year, and sex compute the total number of cases of TB. Make an informative visualisation of the data.
+
+```{r}
+mydata <- who %>%
+  pivot_longer(
+    cols = new_sp_m014:newrel_f65, 
+    names_to = "key", 
+    values_to = "cases", 
+    values_drop_na = TRUE
+  ) %>% 
+  mutate(
+    key = stringr::str_replace(key, "newrel", "new_rel")
+  ) %>%
+  separate(key, c("new", "var", "sexage")) %>% 
+  select(-new, -iso2, -iso3) %>% 
+  separate(sexage, c("sex", "age"), sep = 1) %>%
+  count(year, country, sex, wt=cases, sort=T)
+
+num <- 10
+top_n <- mydata %>% 
+  group_by(country) %>% 
+  summarise(mean_cases = mean(n)) %>% 
+  arrange(desc(mean_cases)) %>% 
+  head(num)
+```
+
+---
+
+```{r, fig.height=5, fig.width=10}
+# Plotting
+top_n %>% inner_join(mydata, by='country') %>%
+  ggplot(aes(x=year, y=n, colour=country)) +
+  geom_line() +
+  labs(title='Number of TB cases over time in top 10 countries',
+       subtitle='separated by sex') +
+  xlab(NULL) + ylab('Number of cases') +
+  facet_wrap(~sex)
+```
+
+---
+
+## Non-tidy data
+
+> There are two main reasons to use other data structures:
+
+> * Alternative representations may have substantial performance or space advantages.
+
+> * Specialised fields have evolved their own conventions for storing data that may be quite different to the conventions of tidy data.
+
+> Either of these reasons means you’ll need something other than a tibble (or data frame). If your data does fit naturally into a rectangular structure composed of observations and variables, I think tidy data should be your default choice. But there are good reasons to use other structures; tidy data is not the only way.
+
+> If you’d like to learn more about non-tidy data, I’d highly recommend this thoughtful blog post by Jeff Leek: http://simplystatistics.org/2016/02/17/non-tidy-data/
+---
