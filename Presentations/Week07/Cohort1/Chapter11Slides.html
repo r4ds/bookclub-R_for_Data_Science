@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>R for Data Science</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Luke Morris" />
+    <meta name="date" content="2020-10-02" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="custom.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# R for Data Science
+## Chapter 11: Data Import
+### Luke Morris
+### <span class="citation">@LukeMorris</span>
+### 2020-10-02
+
+---
+
+
+
+
+
+## Importing your own data
+
+- The tidyverse comes with handy tools to get your own data into R.
+
+- The most common function is `read_csv()`, the focus of this chapter.
+
+- There's also... 
+  - `read_csv2()` if you're ever dealing with numbers written in non-U.S. style
+    (thousands and millions split up by periods, semicolon as delimiter)
+  
+  - `read_tsv()` if your columns are split up by tabs instead of columns
+  
+  - `read_delim()`, which lets you set your own delimiter to split columns
+  
+---
+
+## Let's pull some data in!
+
+
+```r
+trucks &lt;- read_csv("trucks.csv")
+```
+
+```
+## Parsed with column specification:
+## cols(
+##   make = col_character(),
+##   model = col_character(),
+##   year = col_double(),
+##   color = col_character()
+## )
+```
+
+```r
+trucks
+```
+
+```
+## # A tibble: 4 x 4
+##   make      model      year color
+##   &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;
+## 1 Chevrolet Silverado  2002 Black
+## 2 Ford      F-150      2010 Red  
+## 3 Toyota    Tundra     2015 Blue 
+## 4 Dodge     Ram        2019 White
+```
+
+---
+
+## A little extra help
+
+If your file doesn't get straight to the point, there are ways to point R to the 
+beginning of the relevant data: `skip =` and `comment =`
+
+
+```r
+read_csv("The first line of metadata
+  The second line of metadata
+  x,y,z
+  1,2,3", skip = 2)
+```
+
+```
+## # A tibble: 1 x 3
+##       x     y     z
+##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1     1     2     3
+```
+
+```r
+read_csv("# A comment I want to skip
+  x,y,z
+  1,2,3", comment = "#")
+```
+
+```
+## # A tibble: 1 x 3
+##       x     y     z
+##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1     1     2     3
+```
+
+---
+
+## A little extra help
+
+No column names? No problem! You can tell R they don't exist, or provide your own
+
+
+```r
+read_csv("1,2,3\n4,5,6", col_names = FALSE)
+```
+
+```
+## # A tibble: 2 x 3
+##      X1    X2    X3
+##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1     1     2     3
+## 2     4     5     6
+```
+
+```r
+read_csv("1,2,3\n4,5,6", col_names = c("x", "y", "z"))
+```
+
+```
+## # A tibble: 2 x 3
+##       x     y     z
+##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1     1     2     3
+## 2     4     5     6
+```
+
+(FYI: that "\n" you see is a shortcut that tells R to create a new line)
+
+---
+
+## A little extra help
+
+Adding `na = ` to the `read_csv()` command lets you tell R what values should
+be interpreted as NAs
+
+
+```r
+read_csv("a,b,c\n1,2,.", na = ".")
+```
+
+```
+## # A tibble: 1 x 3
+##       a     b c    
+##   &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;
+## 1     1     2 NA
+```
+
+Declaring `quote =` lets you guide R through what it should be reading as
+quotation marks (in the case the data doesn't use the typical "")
+
+
+```r
+read_delim("x,y\n1,'a,b'", ",", quote = "'")
+```
+
+```
+## # A tibble: 1 x 2
+##       x y    
+##   &lt;dbl&gt; &lt;chr&gt;
+## 1     1 a,b
+```
+
+---
+
+## Parsing vectors
+
+The secret sauce behind the `readr` package's ability to read your data is in
+its usage of `parse_*()` functions.
+
+
+```r
+str(parse_logical(c("TRUE", "FALSE", "NA")))
+```
+
+```
+##  logi [1:3] TRUE FALSE NA
+```
+
+```r
+str(parse_integer(c("1", "2", "3")))
+```
+
+```
+##  int [1:3] 1 2 3
+```
+
+```r
+str(parse_date(c("2010-01-01", "1979-10-14")))
+```
+
+```
+##  Date[1:2], format: "2010-01-01" "1979-10-14"
+```
+
+```r
+parse_integer(c("1", "231", ".", "456"), na = ".")
+```
+
+```
+## [1]   1 231  NA 456
+```
+
+---
+
+## When parsing goes wrong
+
+Parsing failures result in a warning in the console ...
+
+
+```r
+x &lt;- parse_integer(c("123", "345", "abc", "123.45"))
+```
+
+```
+## Warning: 2 parsing failures.
+## row col               expected actual
+##   3  -- an integer                abc
+##   4  -- no trailing characters    .45
+```
+
+
+... and missing data in the output.
+
+
+```r
+x
+```
+
+```
+## [1] 123 345  NA  NA
+## attr(,"problems")
+## # A tibble: 2 x 4
+##     row   col expected               actual
+##   &lt;int&gt; &lt;int&gt; &lt;chr&gt;                  &lt;chr&gt; 
+## 1     3    NA an integer             abc   
+## 2     4    NA no trailing characters .45
+```
+
+Use `problems()` to get a look at all the errors
+
+---
+
+## So. Many. Parsers.
+
+Here's a look at what parsers are available in `readr`
+
+`parse_logical()`
+
+`parse_integer()`
+
+`parse_double()`
+
+`parse_number()`
+
+`parse_character()`
+
+`parse_factor()`
+
+`parse_datetime()`
+
+`parse_date()`
+
+`parse_time()`
+
+Not sure which one you need? Look back at this part of the chapter to decide.
+
+---
+
+## How `readr` works
+
+- It guesses which type of data is in your column based on what it sees in the
+first 1000 entries.
+
+- If that first set of entries isn't typical of the column as a whole, it may
+guess incorrectly (e.g. If there's nothing but `NA`s in the first 1000 entries,
+it'll guess logical)
+
+- Again, you can use `problems()` to get a look at all the errors.
+
+- Best plan of action is to solve issues column by column.
+
+- Once you figure out what type of data the column should be read in as, you
+can tell R to read it in that way using the `col_*()` arguments
+
+
+```r
+challenge &lt;- read_csv(
+  readr_example("challenge.csv"), 
+  col_types = cols(
+    x = col_double(),
+    y = col_logical()
+  )
+)
+```
+
+---
+
+## Other ways to troubleshoot
+
+- Increase the number of observations `readr` uses to guess the column type
+
+
+```r
+challenge2 &lt;- read_csv(readr_example("challenge.csv"), guess_max = 1001)
+```
+
+--
+
+- Nuclear option: Read all the columns in as characters
+
+
+```r
+challenge2 &lt;- read_csv(readr_example("challenge.csv"), 
+  col_types = cols(.default = col_character())
+)
+```
+
+"This is particularly useful in conjunction with `type_convert()`, which applies the parsing heuristics to the character columns in a data frame."
+
+---
+
+## Writing to a file
+
+Need to get your newly manipulated data out of R? That's where `write_csv()`
+and `write_tsv()` come in.
+
+
+```r
+write_csv(trucks, "trucks.csv")
+```
+
+The first argument tells R **which** dataframe we're writing to file. The second
+tells it **where** we will write that file.
+
+Planning to use that fresh new csv in Excel? `write_excel_csv()` can make it
+play nice with Excel. Also consider checking out the `readxl` package.
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create();
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();</script>
+<style>
+.logo {
+  background-image: url(r4ds.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  width: 110px;
+  height: 128px;
+  z-index: 0;
+}
+</style>
+
+<script>
+document
+  .querySelectorAll(
+    '.remark-slide-content' +
+    ':not(.title-slide)' +
+    // add additional classes to exclude here, e.g.
+    // ':not(.inverse)' +
+    ':not(.hide-logo)'
+  )
+  .forEach(el => {
+    el.innerHTML += '<div class="logo"></div>';
+  });
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
