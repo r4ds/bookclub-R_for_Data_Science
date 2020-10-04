@@ -102,7 +102,7 @@ Chapter 10 Tibbles
 Chapter 11 Data import 
 
 - Shamsuddeen Muhammad: [VIDEO](https://youtu.be/oz3GftZaLoU) | SLIDES
-- Luke Morris: [VIDEO](https://youtu.be/FVF_aDtsQ_U) | [SLIDES](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week06/Cohort1/Chapter8910Slides.html)
+- Luke Morris: [VIDEO](https://www.youtube.com/watch?v=6QIDXUJbB1o) | [SLIDES](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week07/Cohort1/Chapter11Slides.html#1)
 
 Chapter 12 Tidy data 
 
