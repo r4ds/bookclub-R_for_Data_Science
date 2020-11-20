@@ -20,13 +20,14 @@ This repo contains 3 main folders:
 
 *Cohort 1 [Americas] - (started 2020-07-31) - Fridays, 8pm E(D)T*
 
-- 2020-10-09 - Chapter 12 - Tidy Data
-- 2020-10-16 - Chapter 13 - Relational Data
-- 2020-10-23 - Chapter 14 - Strings
+- CURRENTLY REORGANIZING, PLEASE SEE [SLACK](http://r4ds.io/join) FOR DETAILS!
 
 <details>
   <summary> Future Meetings </summary>
 
+- 2020-10-09 - Chapter 12 - Tidy Data
+- 2020-10-16 - Chapter 13 - Relational Data
+- 2020-10-23 - Chapter 14 - Strings
 - 2020-10-30 - Chapter 15 - Factors
 - 2020-11-05 - Chapter 16 - Dates and Times
 - 2020-11-12 - Wrangle Review and/or Program Intro
@@ -37,16 +38,16 @@ This repo contains 3 main folders:
 
 *Cohort 2 [Africa/Europe] - (starting 2020-08-03) - Tuesdays, 19:30 CE(S)T*
 
-- 2020-10-19 Chapter 15 - Factors
-- 2020-10-26 Chapter 16 - Dates and times
-- 2020-11-02 Chapter 17 - Introduction (to Programming)
+- 2020-11-23 Chapter 20 - Vectors
+- 2020-11-30 Chapter 21 - Iteration
+- 2020-12-07 Chapter 22 - Introduction (Modeling)
 
 <details>
   <summary> Future Meetings </summary>
 
-- 2020-11-09 Chapter 18 - Pipes
-- 2020-11-16 Chapter 19 - Functions
-- 2020-11-23 Chapter 20 - Vectors
+- 2020-12-14 Chapter 23 - Model basics
+- 2020-12-21 Chapter 24 - Model building
+- 2020-12-28 Chapter 25 - Many models
 
 </details>
 <hr>
@@ -117,11 +118,11 @@ Chapter 14 Strings
 
 Chapter 15 Factors 
 
-- 
+- Cohort 2: Shamsuddeen Muhammad ([video](https://youtu.be/BE9cBn_kEuI) | SLIDES)
 
 Chapter 16 Dates and times 
 
-- 
+- Cohort 2: Havva Yalinca ([video](https://youtu.be/k9JxPplTbxg) | SLIDES)
 
 Chapter 17 Introduction 
 
@@ -129,11 +130,11 @@ Chapter 17 Introduction
 
 Chapter 18 Pipes 
 
-- 
+- Cohort 2: Shamsuddeen Muhammad ([video](https://youtu.be/lOhocN1qVFk) | SLIDES)
 
 Chapter 19 Functions 
 
-- 
+- Cohort 2: Shamsuddeen Muhammad (see Chapter 18)
 
 Chapter 20 Vectors 
 
