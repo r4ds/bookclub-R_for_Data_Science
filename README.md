@@ -42,6 +42,10 @@ This repo contains 3 main folders:
 - 2020-11-30 Chapter 21 - Iteration
 - 2020-12-07 Chapter 22 - Introduction (Modeling)
 
+*Cohort 3 [Asia] - (starting 2020-12-08) - Tuesdays, 02:30 am UTC*
+
+- 2020-12-08 Chapter 1 - Introduction
+
 <details>
   <summary> Future Meetings </summary>
 
