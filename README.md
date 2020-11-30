@@ -52,6 +52,16 @@ This repo contains 3 main folders:
 </details>
 <hr>
 
+
+*Cohort 3 [Asia] - (starting 2020-12-08) - Tuesdays, 02:30 am UTC*
+
+- 2020-12-08 Chapter 1 - Introduction
+
+<details>
+  <summary> Future Meetings </summary>
+</details>
+<hr>
+
 ### Presentations & Recordings
 
 Chapter 2 Introduction 
