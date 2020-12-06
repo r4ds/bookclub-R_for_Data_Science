@@ -1,0 +1,316 @@
+---
+title: "R4DS bookclub"
+subtitle: "Chapter 13: Relational Data"
+author: "Ruth Alsancak"
+date: "05/10/2020"
+output:
+  xaringan::moon_reader:
+    css: [default, rladies, rladies-fonts]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+# Relational data
+
+Collectively, multiple tables of data are called **relational data** because it
+is the relations, not just the individual datasets, that are important.
+
+A variable in one table and its corresponding variable in another table form a 
+**relation**.
+
+<br/>
+
+<img src="https://d33wubrfki0l68.cloudfront.net/245292d1ea724f6c3fd8a92063dcd7b
+fb9758d02/5751b/diagrams/relational-nycflights.png" width="60%"/>
+
+---
+
+# Verbs for working with pairs of tables
+
+- Mutating joins
+
+<img src="https://d33wubrfki0l68.cloudfront.net/3abea0b730526c3f053a3838953c35
+a0ccbe8980/7f29b/diagrams/join-inner.png" width="50%"/>
+
+--
+
+- Filtering joins
+
+<img src="https://d33wubrfki0l68.cloudfront.net/028065a7f353a932d70d2dfc82bc5c
+5966f768ad/85a30/diagrams/join-semi.png" width="50%"/>
+
+--
+
+- Set operations
+
+---
+
+# Working with keys
+
+A **key** is a variable (or set of variables) that uniquely identifies an 
+observation:
+
+- A **primary key** uniquely identifies an observation in its own table
+
+- A **foreign key** uniquely identifies an observation in another table
+
+- A **surrogate key** can be added if a table doesn't have a primary key (use 
+mutate() and row_number())
+
+--
+
+It's good practice to check your primary keys are unique:
+
+```{r include = FALSE}
+library(tidyverse)
+library(nycflights13)
+```
+
+
+```{r}
+planes %>% 
+  count(tailnum) %>% 
+  filter(n>1)
+```
+
+Duplicate keys in one table may be useful if adding in additional information,
+but duplicate keys in both tables usually means there's an error (neither of
+the keys uniquely identify an observation).
+
+---
+
+# Defining the key columns to use for the join
+
+Default, **by = NULL**, joins using all variables that appear in both tables 
+(natural join):
+
+```{r include = FALSE}
+flights2 <- flights %>% 
+  select(year:day, hour, origin, dest, tailnum, carrier)
+```
+
+```{r}
+flights2 %>% 
+  left_join(weather)
+```
+
+---
+
+# Defining the key columns to use for the join
+
+**by = "key"** joins using a single variable that has the same name in both 
+tables:
+
+```{r}
+flights2 %>% 
+  select(-origin, -dest) %>% 
+  left_join(airlines, by = "carrier")
+```
+
+---
+
+# Defining the key columns to use for the join
+
+**by = "x"** (character vector) is like a natural join, but only uses some of
+the common variables:
+
+```{r}
+flights2 %>% 
+  left_join(planes, by = "tailnum")
+```
+
+---
+
+# Defining the key columns to use for the join
+
+**by = c("a" = "b")** (named character vector) matches variable a in table x 
+to column b in table y:
+
+```{r}
+flights2 %>% 
+  left_join(airports, c("origin" = "faa"))
+```
+
+---
+
+# Mutating joins: inner join
+
+**Inner join**: matches pairs of observations whenever the keys are equal:
+
+<img src="https://d33wubrfki0l68.cloudfront.net/3abea0b730526c3f053a3838953c35a
+0ccbe8980/7f29b/diagrams/join-inner.png" width="50%"/>
+
+```{r include = FALSE}
+x <- tribble(
+  ~key, ~val_x,
+    1,  "x1",
+    2,  "x2",
+    3,  "x3"
+)
+y <- tribble(
+  ~key, ~val_y,
+    1,  "y1",
+    2,  "y2",
+    4,  "y3"
+)
+```
+
+```{r}
+x %>% 
+  inner_join(y, by = "key")
+```
+
+---
+
+# Mutating joins: outer join
+
+**Outer join**: keeps observations that appear in at least one of 
+the tables:
+
+.pull-left[1. A **left join** keeps all observations in x
+
+2. A **right join** keeps all observations in y
+
+3. A **full join** keeps all observations in x and y
+
+```{r include = FALSE}
+x <- tribble(
+  ~key, ~val_x,
+    1,  "x1",
+    2,  "x2",
+    3,  "x3"
+)
+y <- tribble(
+  ~key, ~val_y,
+    1,  "y1",
+    2,  "y2",
+    4,  "y3"
+)
+```
+
+```{r}
+x %>% 
+  full_join(y, by ="key")
+```
+]
+
+.pull-right[<img src="https://d33wubrfki0l68.cloudfront.net/9c12ca9e12ed26a7
+c5d2aa08e36d2ac4fb593f1e/79980/diagrams/join-outer.png" width=85%/>]
+
+---
+
+# Filtering joins: semi-join
+
+A **semi-join** keeps all observations in x that have a match in y:
+
+<img src="https://d33wubrfki0l68.cloudfront.net/028065a7f353a932d70d2dfc82bc5c
+5966f768ad/85a30/diagrams/join-semi.png" width="50%"/>
+
+```{r include = FALSE}
+top_dest <- flights %>% 
+  count(dest, sort = TRUE) %>% 
+  head(10)
+```
+
+```{r}
+flights %>% 
+  semi_join(top_dest) %>% 
+  head(2)
+```
+
+---
+
+# Filtering joins: anti-join
+
+An **anti-join** drops all observations in x that have a match in y:
+
+<img src="https://d33wubrfki0l68.cloudfront.net/f29a85efd53a079cc84c14ba4ba6894
+e238c3759/c1408/diagrams/join-anti.png" width="50%"/>
+
+```{r}
+flights %>% 
+  anti_join(planes, by = "tailnum") %>% 
+  count(tailnum, sort = TRUE) %>% 
+  head(5)
+```
+
+---
+
+# Set operations
+
+**Set operations** expect x and y inputs to have same variables. They work with
+complete rows, treat the observations like sets, and compare the values of 
+every variable.
+
+--
+
+```{r include = FALSE}
+df1 <- tribble(
+  ~x, ~y,
+  1, 1,
+  2, 1
+)
+
+df2 <- tribble(
+  ~x, ~y,
+  1, 1,
+  1, 2
+)
+```
+
+.pull-left[
+df1
+```{r echo = FALSE}
+head(df1) %>% 
+  knitr::kable(format = "html", table.attr = "style=width:40%;'")
+```
+]
+
+.pull-right[
+df2
+```{r echo = FALSE}
+head(df2) %>% 
+  knitr::kable(format = "html", table.attr = "style=width:40%;'")
+```
+]
+
+--
+
+<br/>
+
+**intersect(x, y)** returns only observations in both x and y:
+
+```{r}
+intersect(df1, df2)
+```
+
+---
+
+# Set operations
+
+**union(x, y)** returns unique observations in x and y:
+
+```{r}
+union(df1, df2)
+```
+
+<br/>
+
+--
+
+**setdiff(x, y)** returns observations in x, but not in y:
+
+.pull-left[
+```{r}
+setdiff(df1, df2)
+```
+]
+
+.pull-right[
+```{r}
+setdiff(df2, df1)
+```
+]
