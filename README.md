@@ -55,10 +55,17 @@ This repo contains 3 main folders:
 
 *Cohort 3 [Asia] - (starting 2020-12-08) - Tuesdays, 02:30 am UTC*
 
-- 2020-12-08 Chapter 1 - Introduction
+- 2020-12-15 Chapter 3 - Data visualization
+- 2020-12-22 Chapter 4 - Workflow: basics
+- 2020-12-29 Chapter 5 - Data transformation
 
 <details>
   <summary> Future Meetings </summary>
+  
+- 2021-01-05 Chapter 6 - Workflow: scripts
+- 2021-01-12 Chapter 7 - Exploratory Data Analysis
+- 2021-01-19 Chapter 8 - Workflow: projects
+
 </details>
 <hr>
 
@@ -68,6 +75,7 @@ Chapter 2 Introduction
 
 - Cohort 1: Luke Morris ([video](https://youtu.be/J8KHe2KAnUk) | [slides](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week01/Cohort1/R4DS%20Ch%201-2%20-%20Morris.html))
 - Cohort 2: [Alan Kinene](https://twitter.com/kinenealan) ([video](https://youtu.be/M28oO5jmVQU) | [slides](https://www.alankinene.com/r4ds_book_club/r4ds/r4ds-ch1_2.html#1))
+- Cohort 3: Adithi Upadhya ([video](https://youtu.be/l3OMDYzn7uU) | SLIDES)
 
 Chapter 3 Data visualisation 
 
