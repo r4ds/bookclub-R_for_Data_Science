@@ -75,7 +75,7 @@ Chapter 2 Introduction
 
 - Cohort 1: Luke Morris ([video](https://youtu.be/J8KHe2KAnUk) | [slides](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week01/Cohort1/R4DS%20Ch%201-2%20-%20Morris.html))
 - Cohort 2: [Alan Kinene](https://twitter.com/kinenealan) ([video](https://youtu.be/M28oO5jmVQU) | [slides](https://www.alankinene.com/r4ds_book_club/r4ds/r4ds-ch1_2.html#1))
-- Cohort 3: Adithi Upadhya ([video](https://youtu.be/l3OMDYzn7uU) | SLIDES)
+- Cohort 3: Adithi R. Upadhya ([video](https://youtu.be/l3OMDYzn7uU) | [slides](https://github.com/adithirgis/r4ds_practice/blob/master/R/R4DS_Asian_Chap_1_2_ARU.Rmd))
 
 Chapter 3 Data visualisation 
 
