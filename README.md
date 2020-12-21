@@ -18,36 +18,17 @@ This repo contains 3 main folders:
 
 ### Meeting Schedule 
 
-*Cohort 1 [Americas] - (started 2020-07-31) - Fridays, 8pm E(D)T*
-
-- CURRENTLY REORGANIZING, PLEASE SEE [SLACK](http://r4ds.io/join) FOR DETAILS!
-
-<details>
-  <summary> Future Meetings </summary>
-
-- 2020-10-09 - Chapter 12 - Tidy Data
-- 2020-10-16 - Chapter 13 - Relational Data
-- 2020-10-23 - Chapter 14 - Strings
-- 2020-10-30 - Chapter 15 - Factors
-- 2020-11-05 - Chapter 16 - Dates and Times
-- 2020-11-12 - Wrangle Review and/or Program Intro
-
-</details>
-<hr>
-
-
 *Cohort 2 [Africa/Europe] - (starting 2020-08-03) - Tuesdays, 19:30 CE(S)T*
 
-- 2020-11-23 Chapter 20 - Vectors
-- 2020-11-30 Chapter 21 - Iteration
-- 2020-12-07 Chapter 22 - Introduction (Modeling)
+- 2020-12-28 Chapter 21 - Iteration
+- 2021-01-04 Chapter 22 - Introduction (Modeling)
+- 2021-01-11 Chapter 23 - Model basics
 
 <details>
   <summary> Future Meetings </summary>
 
-- 2020-12-14 Chapter 23 - Model basics
-- 2020-12-21 Chapter 24 - Model building
-- 2020-12-28 Chapter 25 - Many models
+- 2021-01-18 Chapter 24 - Model building
+- 2021-01-25 Chapter 25 - Many models
 
 </details>
 <hr>
@@ -55,16 +36,34 @@ This repo contains 3 main folders:
 
 *Cohort 3 [Asia] - (starting 2020-12-08) - Tuesdays, 02:30 am UTC*
 
-- 2020-12-15 Chapter 3 - Data visualization
 - 2020-12-22 Chapter 4 - Workflow: basics
 - 2020-12-29 Chapter 5 - Data transformation
+- 2021-01-05 Chapter 6 - Workflow: scripts
 
 <details>
   <summary> Future Meetings </summary>
   
-- 2021-01-05 Chapter 6 - Workflow: scripts
 - 2021-01-12 Chapter 7 - Exploratory Data Analysis
 - 2021-01-19 Chapter 8 - Workflow: projects
+- 2021-01-26 Chapter 9 - Introduction (Wrangle)
+
+</details>
+<hr>
+
+
+*Cohort 4 - (starting 2020-12-16) - Wednesdays, 06:00 pm CST*
+
+- 2020-12-23 Chapter 3 - Data visualization
+- 2020-12-30 Chapter 4 - Workflow: basics
+
+<details>
+  <summary> Future Meetings </summary>
+  
+- 2021-01-06 Chapter 5 - Data transformation
+- 2021-01-13 Chapter 6 - Workflow: scripts
+- 2021-01-20 Chapter 7 - Exploratory Data Analysis
+- 2021-01-27 Chapter 8 - Workflow: projects
+- 2021-02-03 Chapter 9 - Introduction (Wrangle)
 
 </details>
 <hr>
@@ -76,11 +75,13 @@ Chapter 2 Introduction
 - Cohort 1: Luke Morris ([video](https://youtu.be/J8KHe2KAnUk) | [slides](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week01/Cohort1/R4DS%20Ch%201-2%20-%20Morris.html))
 - Cohort 2: [Alan Kinene](https://twitter.com/kinenealan) ([video](https://youtu.be/M28oO5jmVQU) | [slides](https://www.alankinene.com/r4ds_book_club/r4ds/r4ds-ch1_2.html#1))
 - Cohort 3: Adithi R. Upadhya ([video](https://youtu.be/l3OMDYzn7uU) | [slides](https://github.com/adithirgis/r4ds_practice/blob/master/R/R4DS_Asian_Chap_1_2_ARU.Rmd))
+- Cohort 4: Ryan S ([video](https://youtu.be/_IQrDw3Fp4M))
 
 Chapter 3 Data visualisation 
 
 - Cohort 1: Luke Morris ([video](https://youtu.be/TuWkMvQbYPI) | [Gina Reynolds' ggplot flipbook](https://evamaerey.github.io/ggplot_flipbook/ggplot_flipbook_xaringan.html))
 - Cohort 2: Kamran Khan ([slides](https://github.com/camcaan/bookclub-R_for_Data_Science/blob/main/R4DS_Visualisation_slides.pptx) | [video](https://youtu.be/1Kl-Ma2Ajk8))
+- Cohort 3: Arnab Dey ([video](https://youtu.be/8Ltc8Zxpqjg))
 
 Chapter 4 Workflow: basics 
 
@@ -144,8 +145,6 @@ Chapter 16 Dates and times
 
 Chapter 17 Introduction 
 
-- 
-
 Chapter 18 Pipes 
 
 - Cohort 2: Shamsuddeen Muhammad ([video](https://youtu.be/lOhocN1qVFk) | SLIDES)
@@ -156,7 +155,7 @@ Chapter 19 Functions
 
 Chapter 20 Vectors 
 
-- 
+- Cohort 2: Alan Kinene ([video](https://youtu.be/Ggqo6Q4T_FA))
 
 Chapter 21 Iteration 
 
