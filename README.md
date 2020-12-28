@@ -36,14 +36,13 @@ This repo contains 3 main folders:
 
 *Cohort 3 [Asia] - (starting 2020-12-08) - Tuesdays, 02:30 am UTC*
 
-- 2020-12-22 Chapter 4 - Workflow: basics
 - 2020-12-29 Chapter 5 - Data transformation
 - 2021-01-05 Chapter 6 - Workflow: scripts
+- 2021-01-12 Chapter 7 - Exploratory Data Analysis
 
 <details>
   <summary> Future Meetings </summary>
   
-- 2021-01-12 Chapter 7 - Exploratory Data Analysis
 - 2021-01-19 Chapter 8 - Workflow: projects
 - 2021-01-26 Chapter 9 - Introduction (Wrangle)
 
@@ -87,11 +86,13 @@ Chapter 4 Workflow: basics
 
 - Cohort 1: Erick Knackstedt ([video](https://youtu.be/utmMd8QEq7Y) | [slides](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week03/Cohort1/Chapter4Slides.html)) 
 - Cohort 2: Neha Moopen ([video](https://youtu.be/uFseYWMo5jg) | SLIDES)
+- Cohort 3: Deepthi ([video](https://youtu.be/5sEHsmktlWE))
 
 Chapter 5 Data transformation 
 
 - Cohort 1: Silvia Canelón ([video (merged with ch4)](https://youtu.be/p-h758aKWQY) | [slides](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week04/Cohort1/Chapter5Slides.html))
 - Cohort 2: Neha Moopen ([video Pt.1 (merged with ch4)](https://youtu.be/uFseYWMo5jg), [video Pt.2](https://youtu.be/VXzFEZ3LMJU)| SLIDES)
+- Cohort 3: See Chapter 4
 
 Chapter 6 Workflow: scripts
 
