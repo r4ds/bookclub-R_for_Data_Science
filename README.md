@@ -78,7 +78,7 @@ Chapter 2 Introduction
 Chapter 3 Data visualisation 
 
 - Cohort 1: Luke Morris ([video](https://youtu.be/TuWkMvQbYPI) | [Gina Reynolds' ggplot flipbook](https://evamaerey.github.io/ggplot_flipbook/ggplot_flipbook_xaringan.html))
-- Cohort 2: Kamran Khan ([slides](https://github.com/camcaan/bookclub-R_for_Data_Science/blob/main/R4DS_Visualisation_slides.pptx) | [video](https://youtu.be/1Kl-Ma2Ajk8))
+- Cohort 2: Kamran Khan ([slides](https://github.com/camcaan/bookclub-R_for_Data_Science/blob/main/Presentations/Week02/Cohort02/R4DS_Visualisation_slides.pptx) | [video](https://youtu.be/1Kl-Ma2Ajk8))
 - Cohort 3: Arnab Dey ([video](https://youtu.be/8Ltc8Zxpqjg))
 
 Chapter 4 Workflow: basics 
