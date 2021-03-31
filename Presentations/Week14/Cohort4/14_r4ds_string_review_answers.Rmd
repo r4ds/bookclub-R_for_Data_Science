@@ -1,0 +1,107 @@
+
+```{r}
+library(tidyverse)
+```
+
+
+# String review
+
+Using the vector fruit
+
+```{r}
+fruit
+```
+
+# Level 1 
+
+```{r}
+fruit %>% 
+  as_tibble() %>% 
+  filter(str_detect(value, "fruit"))
+
+# What will be returned?
+# A. All fruits 
+# B. Fruits with 'fruit' in it's name
+# C. Fruits where 'fruit' IS NOT in the name
+# D. An error will be returned
+```
+
+# Level 2
+
+```{r}
+fruit %>% 
+  as_tibble() %>% 
+  mutate(match = str_detect(value, ".[\\s]."))
+
+# What will be returned?
+# A. Fruits with a space in the name 
+# B. Fruits that do not contain a space
+# C. Fruits that have a space in the name and a character after the space
+# D. An error will be returned
+```
+
+
+# Level 3
+
+```{r}
+str_extract(fruit, pattern = "([a-z]|[a-z\\s])+berry$")
+
+# What will be matched?
+# A. All fruits 
+# B. Fruits with 'berry' in it's name
+# C. Fruits where 'berry' IS NOT in the name
+# D. An error will be returned
+```
+
+
+# Level 4
+
+```{r}
+fruits_w_symbols <- str_replace_all(fruit, "[u]", "\\\\")
+```
+
+```{r}
+fruits_w_symbols %>% 
+  as_tibble() %>% 
+  filter(str_detect(value, "\\"))
+
+# True or False: This code will identify the fruits with a '\\'
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+fruits_w_symbols %>% 
+  as_tibble() %>% 
+  filter(str_detect(value, "\\\\"))
+```
+
+
+
+
+# Level 5
+
+```{r}
+# What does this code do?
+str_to_lower(str_sort(starwars$name))
+
+# What character is returned?
+starwars$name %>% 
+  as_tibble() %>% 
+  filter(str_detect(value, "Jar\\s"))
+```
+
