@@ -1,0 +1,135 @@
+
+# Examples, Cohort 4 `stringr` package
+
+```{r}
+# stringr is a core tidyverse package
+library(tidyverse)
+```
+
+```{r}
+# A simple vector of string values
+city <- c("Lincoln", "Houston", "Calgary", "New York City", "Chicago", "Rio de Janeiro")
+
+city
+```
+
+# Example 1: Counting length
+
+```{r}
+# Notice spaces are counted as characters
+str_length(city)
+```
+
+# Example 2: Combining strings example
+
+```{r}
+homes <- str_c("Lincoln", "Calgary", "Houston")
+
+homes
+
+# Using a seperator
+homes <- str_c("Lincoln", "Calgary", "Houston", sep = ", ")
+
+homes
+```
+
+# Example 3: Subsetting strings example
+
+```{r}
+str_sub(city, 1, 3)
+
+# Start from the end
+
+str_sub(city, -3, -1)
+```
+
+# Example 4: Change string case
+
+```{r}
+# All upper case
+str_to_upper(city)
+
+# All to lower case
+str_to_lower(city)
+```
+
+# Example 5: Sorting the strings
+
+```{r}
+# Sorting strings
+str_sort(city)
+```
+
+# Example 6: Determine which strings match a pattern
+
+```{r}
+# Using str_detect, all cities containing the vowel i
+str_detect(city, "[i]")
+
+# Count the number of the vowel i in the city
+str_count(city, "[i]")
+```
+
+# Example 7: Find positions of matches
+
+```{r}
+# Find the length of the string
+str_locate(city, "$")
+
+fruit <- c("apple", "banana", "pear", "pineapple")
+str_locate(fruit, "e")
+```
+
+
+# Example 8: Extract matches
+
+```{r}
+# Extract the first lower-case vowel
+str_extract(city, "[aeiou]")
+
+# Extract all the vowels from the string
+str_extract_all(city, "[aeiou]")
+```
+
+
+# Example 9: Replace all vowels with a number
+
+```{r}
+# The first vowel
+str_replace(city, "9", pattern = "[aeiou]")
+
+# All vowels with a 9
+str_replace_all(city, "9", pattern = "[aeiou]")
+```
+
+
+# Example 10: Split on match
+
+```{r}
+# Split at a space
+str_split(city, pattern = "\\s")
+
+# Split the first capitalized letter
+str_split(city, pattern = "[A-Z]")
+
+# Split at a vowel
+str_split(city, pattern = "[aeiou]")
+```
+
+
+# `stringi` examples
+
+```{r}
+library(stringi)
+
+# Reverse the strings
+stri_reverse(starwars$name)
+
+# Detect character set and language
+stri_enc_detect(starwars$name)
+
+# General stats for a character vector
+stri_stats_general(starwars$name)
+```
+
+
