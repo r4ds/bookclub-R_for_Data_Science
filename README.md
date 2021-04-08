@@ -66,16 +66,21 @@ This repo contains 3 main folders:
 - 2021-03-10 Chapter 13 - Relational data
 - 2021-03-17 Chapter 14 - Strings
 - 2021-03-24 Chapter 14 - Strings (Continued)
+- 2021-03-31 Chapter 15 - Factors
+- 2021-04-07 Chapter 16 - Dates & Times
 
 <details>
   <summary> Future Meetings </summary>
   
-- 2021-03-31 Chapter 15 - Factors
-- 2021-04-07 Chapter 16 - Dates & Times
-- 2021-04-14 Chapter 17 & 18 - Introduction: Program; Pipes
+
+- 2021-04-14 Chapter 16, 17 & 18 - Dates & Times (Continued); Introduction: Program; Pipes
 - 2021-04-21 Chapter 19 - Functions
 - 2021-04-28 Chapter 20 - Vectors
 - 2021-05-05 Chapter 21 - Iteration
+- 2021-05-12 Chapter 22 & 23 - Introduction: Models; Model basics
+- 2021-05-19 Chapter 24 - Model building
+- 2021-05-16 Chapter 25 - Many models
+
 
 </details>
 <hr>
@@ -155,37 +160,43 @@ This repo contains 3 main folders:
 #### Chapter 13 Relational data 
 
 - Cohort 2: Ruth Alsancak ([video](https://youtu.be/OrdmIgIF6fE) | SLIDES)
-- Cohort 4: Ryan S ([video](https://www.youtube.com/watch?v=HDns-N3oyPU&list=PL3x6DOfs2NGjtn1_4BSX99R5wrLjK7XvY&index=13) | SLIDES)
+- Cohort 4: Ryan S ([video](https://www.youtube.com/watch?v=HDns-N3oyPU&list=PL3x6DOfs2NGjtn1_4BSX99R5wrLjK7XvY&index=13) | [slides](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week13/Cohort4/13_relational_data_ryan_s.pdf))
 
 #### Chapter 14 Strings 
 
 - Cohort 2: Alan Kinene ([video](https://youtu.be/LhKcezUfOkA) | SLIDES)
-- Cohort 4: [Collin Berke](https://github.com/collinberke) (VIDEO | [slides](ttps://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week14/Cohort4/14_r4ds_chapter_14_slides.pdf))
+- Cohort 4: [Collin Berke](https://github.com/collinberke) ([video - part 1](https://youtu.be/nxYJynGTlr0) | [video - part 2](https://youtu.be/jYxuVLGhXVE) | [slides](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week14/Cohort4/14_r4ds_chapter_14_slides.pdf))
 
 #### Chapter 15 Factors 
 
 - Cohort 2: Shamsuddeen Muhammad ([video](https://youtu.be/BE9cBn_kEuI) | SLIDES)
-- Cohort 4: Ryan S (VIDEO | SLIDES)
+- Cohort 4: Ryan S ([video](https://youtu.be/wLKp5IBy-Zs) | [slides](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week16/Cohort4/16_factors_ryan_s.pdf))
 
 #### Chapter 16 Dates and times 
 
 - Cohort 2: Havva Yalinca ([video](https://youtu.be/k9JxPplTbxg) | SLIDES)
+- Cohort 4: Maria C Ramos (VIDEO | [slides](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week17/Cohort4/16_date_times_maria_ramos.pdf))
 
 #### Chapter 17 Introduction 
 
 #### Chapter 18 Pipes 
 
 - Cohort 2: Shamsuddeen Muhammad ([video](https://youtu.be/lOhocN1qVFk) | SLIDES)
+- Cohort 4: Sandra (VIDEO | SLIDES)
 
 #### Chapter 19 Functions 
 
 - Cohort 2: Shamsuddeen Muhammad (see Chapter 18)
+- Cohort 4: [Collin Berke](https://github.com/collinberke) (VIDEO | SLIDES)
 
 #### Chapter 20 Vectors 
 
 - Cohort 2: Alan Kinene ([video](https://youtu.be/Ggqo6Q4T_FA))
+- Cohort 4: Ryan S (VIDEO | SLIDES)
 
 #### Chapter 21 Iteration 
+
+- Cohort 4: [Collin Berke](https://github.com/collinberke) (VIDEO | SLIDES)
 
 #### Chapter 22 Introduction 
 
