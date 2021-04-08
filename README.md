@@ -160,7 +160,7 @@ This repo contains 3 main folders:
 #### Chapter 13 Relational data 
 
 - Cohort 2: Ruth Alsancak ([video](https://youtu.be/OrdmIgIF6fE) | SLIDES)
-- Cohort 4: Ryan S ([video](https://www.youtube.com/watch?v=HDns-N3oyPU&list=PL3x6DOfs2NGjtn1_4BSX99R5wrLjK7XvY&index=13) | SLIDES)
+- Cohort 4: Ryan S ([video](https://www.youtube.com/watch?v=HDns-N3oyPU&list=PL3x6DOfs2NGjtn1_4BSX99R5wrLjK7XvY&index=13) | [slides](https://r4ds.github.io/bookclub-R_for_Data_Science/Presentations/Week13/Cohort4/13_relational_data_ryan_s.pdf))
 
 #### Chapter 14 Strings 
 
